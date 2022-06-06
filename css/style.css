@@ -1,3 +1,4 @@
+/* Reinicio de propiedades iniciales */
 *{
     margin:0;
     padding: 0;
@@ -5,23 +6,43 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* Color de fondo */
 body{
     background-color: #0B0033;
 }
 
+/*Centrado del bloque aside */ 
 aside, aside h1{
     display:flex;
     justify-content: center;
 }
+/* Estructura del bloque aside */
 aside h1{
     padding:1.5em;
     border: #BFD7EA 2px solid;
     margin-top: 1em;
     content:2em;
     width:50vw;
-    max-width: 500px;
+    max-width: 50vw;
 }
+
+/* Animación titulo */
 aside h1:hover{
     background-color: #BFD7EA;
     color:#0B0033;
+}
+
+/* Estructura texto main */
+
+div{
+    width: 50vw;
+    max-width: 400px;
+    padding:20vh;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.versión{
+    color:red;
 }
