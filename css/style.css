@@ -46,3 +46,7 @@ div{
 .versión{
     color:red;
 }
+
+.tradingview_gadgets{
+    display:inline;
+}
