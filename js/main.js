@@ -34,10 +34,10 @@ function user_asset_input_check(a){
 }
 // 5) Funcion de construcción que uso para crear los objetos de inversion, cada uno tiene un nombre, valor y cantidad asociado.
 // Luego cada objeto ira a un array.
-function Wallet_assets(a,b,c){
-    this.asset_input_name=a;
-    this.asset_input_amount=b;
-    this.asset_input_value=c;
+function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
+    this.asset_input_name=asset_input_name;
+    this.asset_input_amount=asset_input_amount;
+    this.asset_input_value=asset_input_value;
 }
 
 
@@ -102,9 +102,12 @@ let asset_input_amount=0;
 let user_asset_analysis_input=""
 let asset_input_name="";
 let asset_input_value=0;
+let asset_quantity=0;
 
-const case_1_1_asset={}
-const case_1_2_asset={}
+let case_1_1_asset={};
+let case_1_2_asset={};
+let case_1_3=[];
+let case_i={};
 
 //Empezamos a diferenciar distintos tipos de ahorros y los creamos como objetos. Estos objetos despues iran a un array donde seran
 //facilmente manejables.
@@ -114,37 +117,90 @@ while(while_exit){
     if(user_asset_analysis_input=="1"){
             //PESOS EN EFECTIVO
             //Creo un while para controlar que el valor de asset_input sea (si/no), saliendo del while con la funcion user_asset_input_check, que modifica el valor de la condicion del while a true o false dependiendo que ingresa el usuario en asset_input.
+            //Si el valor de asset_input es positivo, pregunta al usuario cuanto de este activo tiene. Dandole valor a unos de los elementos de objetos,
             while(while_inner_exit){
                 asset_input=prompt('¿Tiene moneda nacional ahorrada en efectivo o depositos? (SI/NO):');
                 while_inner_exit=user_asset_input_check(asset_input);
             }
-            //Si el valor de asset_input es positivo, pregunta al usuario cuanto de este activo tiene. Dandole valor a unos de los elementos de objetos,
-            if((asset_input=="Si") || (asset_input=="si") || (asset_input=="SI")){
-                asset_input_amount=prompt('Ingrese la cantidad que posee: ');
+            if((asset_input=="Si") || (asset_input=="si") || (asset_input=="SI")){ 
+                asset_input_amount=parseInt(prompt('Ingrese la cantidad que posee: '));
             }
-
-            asset_input_name="$ARS"; //Estos dos elementos en este caso son fijos, en otros el programa debera calcular.
-            asset_input_value=1;
             
-            //Creo un objeto con el constructor dada tres propiedades del activo: Nombre, Cantidad, Valor.
+            asset_input_name="$ARS"; 
+            asset_input_value=1;
+            //Estos dos elementos en este caso son fijos, en otros el programa debera calcular.
             case_1_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value); 
+            //Creo un objeto con el constructor dada tres propiedades del activo: Nombre, Cantidad, Valor.
+            
 
             //PLAZO FIJO
             while_inner_exit=true; //Reinicio el valor de while_inner_exit para el siguiente paso.
 
             while(while_inner_exit){
-                asset_input=prompt('¿Tiene moneda nacional ahorrada en plazo fijo con interes del '+interest_rate+'%? (SI/NO):');
+                asset_input=prompt('¿Tiene moneda nacional ahorrada en Plazo Fijo con un interes del '+interest_rate+'%?');
                 while_inner_exit=user_asset_input_check(asset_input);
             }
-            if((asset_input=="Si") || (asset_input=="si") || (asset_input=="SI")){
-                asset_input_amount=prompt('Ingrese la cantidad que posee: ');
+            if((asset_input=="Si") || (asset_input=="si") || (asset_input=="SI")){ 
+                asset_input_amount=parseInt(prompt('Ingrese la cantidad que posee en Plazo Fijo $ARS: '));
             }
-
-            asset_input_name="Plazo Fijo $ARS";
+            
+            asset_input_name="Plazo Fijo $ARS"; 
             asset_input_value=1;
+            //Estos dos elementos en este caso son fijos, en otros el programa debera calcular.
+            case_1_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value); 
+            //Creo un objeto con el constructor dada tres propiedades del activo: Nombre, Cantidad, Valor.
 
-            case_1_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value);
+
+
+
+            //ACCIONES Y VALORES
+            while_inner_exit=true; //Reinicio el valor de while_inner_exit para el siguiente paso.
+
+            while(while_inner_exit){
+                asset_input=prompt('¿Tiene acciones o bonos con valuacion en Moneda Nacional $ARS?');
+                while_inner_exit=user_asset_input_check(asset_input);
+                if((asset_input=="Si") || (asset_input=="si") || (asset_input=="SI")){ 
+                    asset_quantity=parseInt(prompt('Ingrese la cantidad de acciones o bonos que posee: '));
+                }
+            //Hago un for con el cual creo los valores para un constructor y luego .push al array
+            for (let stock_number=1;stock_number<=asset_quantity;stock_number++){
+                
+                if((asset_input=="Si") || (asset_input=="si") || (asset_input=="SI")){ 
+                    asset_input_name=prompt('Escriba el nombre de la accion o bono no. '+stock_number+'.');
+                    user_confirmation="";
+
+                    while (user_confirmation!="Si"){
+                    confirm(asset_input_name);
+                    let func_return=user_confirm_func(asset_input_name,"Nombre Acción");  //Funcion 3      
+                    asset_input_name=func_return[1];
+                    user_confirmation=func_return[0];
+                    }    
+
+                    asset_input_amount=parseInt(prompt('Ingrese la cantidad que posee de '+asset_input_name+':'));
+                    user_confirmation="";
+                    while (user_confirmation!="Si"){
+                    confirm(asset_input_amount);
+                    let func_return=user_confirm_func(asset_input_amount,"Cantidad de Acciones");  //Funcion 3      
+                    asset_input_amount=func_return[1];
+                    user_confirmation=func_return[0];
+                    }   
+
+                    asset_input_value=parseInt(prompt('Ingrese el valor de la cotización de la accion '+asset_input_name+'.'))
+                    user_confirmation="";
+                    while (user_confirmation!="Si"){
+                    confirm(asset_input_value);
+                    let func_return=user_confirm_func(asset_input_value,"Cotizacion Acción");  //Funcion 3      
+                    asset_input_value=func_return[1];
+                    user_confirmation=func_return[0];    
+                    }
+                case_i = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value);
+                case_1_3.push(case_i);
+                }
+            }
+        while_inner_exit=false;    
+        }
     }
+
 
     else if(user_asset_analysis_input=="2"){} //Moneda Extranjera
     else if(user_asset_analysis_input=="3"){} //Criptomonedas
@@ -157,6 +213,3 @@ while(while_exit){
         }
     }
 }
-
-//crear un constructor para armar todos los metodos de ahorro del cliente. 
-//Buscar aspectos en comun entre las inversiones extranjeras o argentinas
