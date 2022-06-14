@@ -1,4 +1,4 @@
-/* Reinicio de propiedades iniciales */
+/* REINICIO DE VALORES GENERALES */
 *{
     margin:0;
     padding: 0;
@@ -6,47 +6,63 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-/* Color de fondo */
+/* COLOR DE FONDO */
 body{
     background-color: #0B0033;
 }
 
-/*Centrado del bloque aside */ 
-aside, aside h1{
+/* BLOQUE DE NAV */
+/* Acomodamos la estructura NAV*/
+nav h1{
     display:flex;
     justify-content: center;
+    padding: 1.2em;
+    border-bottom: #BFD7EA 1px solid;
+    width: 100%;
+    font-size: 2em;
 }
-/* Estructura del bloque aside */
-aside h1{
-    padding:1.5em;
-    border: #BFD7EA 2px solid;
-    margin-top: 1em;
-    content:2em;
-    width:50vw;
-    max-width: 50vw;
-}
-
 /* Animación titulo */
-aside h1:hover{
+nav h1:hover{
     background-color: #BFD7EA;
     color:#0B0033;
 }
 
-/* Estructura texto main */
+/* BLOQUE DE MAIN */
+.activos{
+    border-top: #BFD7EA 1px solid;
+    padding-top:1em;
+    padding-left: 2em;
+    padding-right:2em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 
-div{
+} 
+
+
+.greeting{
     width: 50vw;
-    max-width: 400px;
-    padding:20vh;
+    padding-top:2vh;
+    padding-bottom:5vh;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-size: 1.2em;
+    
 }
 
-.versión{
+.greeting span .versión{
     color:red;
 }
 
-.tradingview_gadgets{
-    display:inline;
+
+/* BLOQUE DE FOOTER */
+footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
 }
+
+
+
+
+
