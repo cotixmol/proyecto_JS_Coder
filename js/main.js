@@ -2,7 +2,7 @@
 let case_1_1_asset={}; //Objeto que tiene los $ARS en efectivo
 let case_1_2_asset={}; //Objeto que tiene los Plazo Fijo $ARS
 let case_2_1_asset={}; //Objeto que tiene los $USD en efectivo
-let case_1_3=[]; //Array que tiene las acciones o bonos en $ARS
+let case_1_1=[]; //Array que tiene las acciones o bonos en $ARS
 let case_2_1=[]; //Array que tiene las acciones o bonos en $USD
 let case_2_2=[]; //Array que tiene las otras monedas FIAT que el usuario ingrese.
 let case_3_1=[]; //Array que tiene las cryptomonedas.
@@ -10,15 +10,6 @@ let case_1={}; //Objeto que almacena temporalmente el valor de las acciones o bo
 let case_2={}; //Objeto que almacena temporalmente el valor de las acciones o bonos en $USD, y monedas extranjeras para luego push al objeto
 let case_3={}; //Objeto que almacena temporalmente el valor de las cryptomonedas en $USD para luego push al objeto
 
-//CREACION VARIABLES PARA LA PARTE 2 DEL CODIGO.
-let while_exit=true;
-let while_inner_exit=true;  //Valores para iniciar los ciclos while.
-let asset_input=""  //Creo que la variable que determina la respuesta del usuario, ante si tiene o no tal activo.
-let asset_input_amount=0; //Creo la variable que determina la cantidad de un item predefinido, cuando no los tiene el usuario.
-let user_asset_analysis_input="" //Creo variable que determina la estructura IF.
-let asset_input_name=""; //Creo la variables que determina el nombre del activo.
-let asset_input_value=0; //Creo la variable que determina el valor de un item predefinido, cuando no los tiene el usuario.
-let asset_quantity=0; //Creo la variable que uso en los FOR
 
 //FUNCIONES DEL CODIGO
 // 1) Función para ingresar el valor de un activo y retornarlo:
@@ -106,6 +97,16 @@ while (user_confirmation!="Si"){
     user_confirmation=func_return[0];
 } 
 
+//CREACION VARIABLES PARA LA PARTE 2 DEL CODIGO.
+let while_exit=true;
+let while_inner_exit=true;  //Valores para iniciar los ciclos while.
+let asset_input=""  //Creo que la variable que determina la respuesta del usuario, ante si tiene o no tal activo.
+let asset_input_amount=0; //Creo la variable que determina la cantidad de un item predefinido, cuando no los tiene el usuario.
+let user_asset_analysis_input="" //Creo variable que determina la estructura IF.
+let asset_input_name=""; //Creo la variables que determina el nombre del activo.
+let asset_input_value=0; //Creo la variable que determina el valor de un item predefinido, cuando no los tiene el usuario.
+let asset_quantity=0; //Creo la variable que uso en los FOR
+
 // PARTE 2. TOMA DE INFORMACIÓN DE ACTIVOS.
 
 alert("Perfecto "+user_name+". Por ahora hemos creado una base para armar tu cartera de inversiones.\nAhora a completar la siguiente sección 🎉");
@@ -119,6 +120,7 @@ while(while_exit){
     if(user_asset_analysis_input=="1"){
             
         //PESOS EN EFECTIVO
+            while_inner_exit=true; //Reinicio el valor de while_inner_exit para el siguiente paso.
             //Creo un while para controlar que el valor de asset_input sea (si/no), saliendo del while con la funcion user_asset_input_check, que modifica el valor de la condicion del while a true o false dependiendo que ingresa el usuario en asset_input.
             //Si el valor de asset_input es positivo, pregunta al usuario cuanto de este activo tiene. Dandole valor a unos de los elementos de objetos,
             while(while_inner_exit){
@@ -195,9 +197,9 @@ while(while_exit){
                     asset_input_value=func_return[1];
                     user_confirmation=func_return[0];    
                     }
+                }
                 case_1 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value);
                 case_1_1.push(case_1);
-                }
             }
         while_inner_exit=false;    
         }

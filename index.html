@@ -13,20 +13,97 @@
         <nav>
             <h1>Mi Cartera de Inversión</h1>
         </nav>
-        <div class="greeting">
-            <span>Este simulador es la <span class="versión">Versión Beta</span> de un programa que calcula tu cartera de ahorro. Orientado para los ciudadanos de argentina, plantemos diversos intrumentos financieros, considerando distintas variables macroeconomicas.</span>
+
+        <!-- Aca inicia el widget de trading view. NO ABRIR -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright"><a href="https://es.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text"></span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                    {
+                    "symbols" [
+                    {
+                        "description": "Bitcoin/Dolar ($USD)",
+                        "proName": "BITSTAMP:BTCUSD"
+                    },
+                    {
+                        "description": "Ether/Dolar ($USD)",
+                        "proName": "COINBASE:ETHUSD"
+                    },
+                    {
+                        "description": "Dolar Oficial ($ARS)",
+                        "proName": "FX_IDC:USDARS"
+                    },
+                    {
+                        "description": "S&P 500",
+                        "proName": "SP:SPX"
+                    },
+                    {
+                        "description": "NASDAQ",
+                        "proName": "SKILLING:NASDAQ"
+                    },
+                    {
+                        "description": "DOW JONES",
+                        "proName": "TVC:DJI"
+                    },
+                    {
+                        "description": "MERVAL",
+                        "proName": "INDEX:IAR"
+                    },
+                    {
+                        "description": "Dolar/Euro ($USD)",
+                        "proName": "FX_IDC:USDEUR"
+                    },
+                    {
+                        "description": "YPF Argentina ($ARS)",
+                        "proName": "BCBA:YPFD"
+                    },
+                    {
+                        "description": "Grupo Galicia ($ARS)",
+                        "proName": "BCBA:GGAL"
+                    }
+                    ],
+                    "showSymbolLogo"; true,
+                    "colorTheme"; "dark",
+                    "isTransparent"; false,
+                    "displayMode"; "adaptive",
+                    "locale"; "es"
+                }
+                    </script>
         </div>
+        
+        <div class="greeting">
+            <span>Este simulador es una <span class="versión">Versión Beta</span> de un programa en Javascript que calcula tu cartera de inversiones y ahorro. Tomando el valor del Dolar y Tasa de Interes, lo orientamos para los ciudadanos de Argentina. A partir de esto planteamos diversos intrumentos financieros y su impacto en el ahorro.</span>
+        </div>
+
+        <!-- Aca armamos 3 bloques donde introduciremos los inputs del usuario en JS mediante el uso y manipulacion de DOM -->
         <main class="activos">
-            <div class="moneda_nacional">
-                <h3>Moneda Nacional</h3>
+            <!-- Activos en moneda nacional -->
+            <div id="bloque_moneda_nacional">
+                <h3 class="titulo_moneda_nacional">Moneda Nacional</h3>
+                
+                <div class="activos_ingresados_moneda_nacional">
+
+                </div>
             </div>
-            <div class="moneda_extranjera">
-                <h3>Moneda Extranjera</h3>
+            <!-- Activos en moneda extranjera -->
+            <div id="bloque_moneda_extranjera">
+                <h3 class="titulo_moneda_extranjera">Moneda Extranjera</h3>
+                
+                <div class="activos_ingresados_moneda_extranjera">
+
+                </div>
             </div>
-            <div class="cryptomonedas">
-                <h3>Cryptomonedas</h3>
+            <!-- Activos en cryptomonedas -->
+            <div id="bloque_criptomonedas">
+                <h3 class="titulo_cryptomonedas">Cryptomonedas</h3>
+                
+                <div class="activos_ingresados_cryptomonedas">
+
+                </div>
             </div>
+
         </main>
+
         <footer>
             <p>Copyright &copy <a href="https://www.linkedin.com/in/constancio-molinengo/">Constancio Molinengo</a>.</p>
         </footer>

@@ -13,6 +13,10 @@ body{
 
 /* BLOQUE DE NAV */
 /* Acomodamos la estructura NAV*/
+.greeting span .versión{
+    color:rgb(251,94,107);
+}
+
 nav h1{
     display:flex;
     justify-content: center;
@@ -31,12 +35,17 @@ nav h1:hover{
 .activos{
     border-top: #BFD7EA 1px solid;
     padding-top:1em;
-    padding-left: 2em;
-    padding-right:2em;
+    padding-left: 1em;
+    padding-right:1em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
+    min-width: 500px;
 } 
+
+.titulo_moneda_nacional,.titulo_moneda_extranjera,.titulo_cryptomonedas{
+    display:flex;
+    justify-content: center;
+}
 
 
 .greeting{
@@ -50,14 +59,10 @@ nav h1:hover{
     
 }
 
-.greeting span .versión{
-    color:red;
-}
-
-
 /* BLOQUE DE FOOTER */
 footer{
-    position:absolute;
+    background-color: #0B0033;
+    position:fixed;
     bottom:0;
     width:100%;
 }
