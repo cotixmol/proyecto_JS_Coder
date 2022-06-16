@@ -379,17 +379,133 @@ while(while_exit){
 }
 
 //HASTA ACA ALMACENAMOS TODOS LOS VALORES QUE POSEE EL USUARIO. A PARTIR DE AQUI HAY QUE RESUMIR LA INFORMACIÓN Y MOSTRARLA.
-//ESTOS 3 OBJETOS ALMACENAN INFORMACION PARA TRABAJAR
 
-console.log(case_1_1_asset) //Nombre, Cantidad y Valor de $ARS en efectivo/depositado
-console.log(case_1_2_asset) //Nombre, Cantidad y Valor de Plazo Fijo $ARS
-console.log(case_2_1_asset) //Nombre, Cantidad y Valor de $USD en efectivo/depositado
+
+
+//ESTOS 3 OBJETOS ALMACENAN INFORMACION PARA TRABAJAR
+(case_1_1_asset) //Objeto Nombre, Cantidad y Valor de $ARS en efectivo/depositado
+(case_1_2_asset) //Objeto Nombre, Cantidad y Valor de Plazo Fijo $ARS
+(case_2_1_asset) //Objeto Nombre, Cantidad y Valor de $USD en efectivo/depositado
 
 //ESTOS 4 ARRAYS QUE CONTIENEN OBJETOS SON LOS QUE TRABAJAREMOS PARA PODER MODIFICAR VALORES EN HTML Y MOSTRARLE RESULTADOS AL USUARIO.
+(case_1_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $ARS.
+(case_2_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $USD.
+(case_2_2); //Array que almacena objetos con Nombre, Cantidad y Valor de otras monedas FIAT.
+(case_3_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Cryptomonedas.
 
-console.log(case_1_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $ARS.
-console.log(case_2_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $USD.
-console.log(case_2_2); //Array que almacena objetos con Nombre, Cantidad y Valor de otras monedas FIAT.
-console.log(case_3_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Cryptomonedas.
+
+//NOMBRE DE LAS PROPIEDADES DENTRO DE CADA OBJETO
+(asset_input_name)
+(asset_input_amount)
+(asset_input_value)
+
+//ACOMODAMOS LOS VALORES DENTRO DE LOS 3 PRIMEROS OBJETOS (case_1_1_asset), (case_1_2_asset) y (case_2_1_asset)
+//ASIGNACION DE VALORES DE LAS PROPIEDADES DE CADA OBJETO A VARIABLES MEJOR DEFINIDAS PARA EL USO
+//EL IF SE USA PARA EVITAR LA ASIGNACION DE VARIABLES SI EL USUARIO NO INGRESO VALORES EN ALGUNO DE ESOS TRES OBJETOS.
+
+if (int(case_1_1_asset.asset_input_amount) || case_1_1_asset.asset_input_amount==0){
+}else{
+    pesos_nombre =          case_1_1_asset.asset_input_name;
+    pesos_cantidad =        case_1_1_asset.asset_input_amount;
+    pesos_valor =           case_1_1_asset.asset_input_value;
+}
+
+if (int(case_1_2_asset.asset_input_amount) || case_1_2_asset.asset_input_amount==0){
+}else{
+    PF_nombre =             case_1_2_asset.asset_input_name;
+    PF_cantidad =           case_1_2_asset.asset_input_amount;
+    PF_valor =              case_1_2_asset.asset_input_value;
+}
+
+if (int(case_2_1_asset.asset_input_amount) || case_2_1_asset.asset_input_amount==0){
+}else{
+    dolares_nombre =        case_2_1_asset.asset_input_name;
+    dolares_cantidad =      case_2_1_asset.asset_input_amount;
+    dolares_valor =         case_2_1_asset.asset_input_value;
+}
+
+//MANIPULACION DE ARRAY DE OBJETOS PARA OBTENER VARIABLES MEJOR DEFINIDAS
+// (case_1_1): Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $ARS.
+
+acciones_pesos_nombres = []
+acciones_pesos_valor = []
+acciones_pesos_cantidad = []
+
+for (let el in case_1_1){
+    acciones_pesos_nombres =        push(case_1_1.asset_input_name);
+    acciones_pesos_valor =          push(case_1_1.asset_input_amount);
+    acciones_pesos_cantidad =       push(case_1_1.asset_input_value);
+}
+
+// (case_2_1): Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $USD.
+
+acciones_dolares_nombres = []
+acciones_dolares_valor = []
+acciones_dolares_cantidad = []
+
+for (let el in case_2_1){
+    acciones_dolares_nombres =      push(case_2_1.asset_input_name);
+    acciones_dolares_valor =        push(case_2_1.asset_input_amount);
+    acciones_dolares_cantidad =     push(case_2_1.asset_input_value);
+}
+
+// (case_2_2): Array que almacena objetos con Nombre, Cantidad y Valor de otras monedas FIAT.
+
+otras_monedas_nombres = []
+otras_monedas_valor = []
+otras_monedas_cantidad = []
+
+for (let el in case_2_2){
+    otras_monedas_nombres =         push(case_2_2.asset_input_name);
+    otras_monedas_valor =           push(case_2_2.asset_input_amount);
+    otras_monedas_cantidad =        push(case_2_2.asset_input_value);
+}
+
+//(case_3_1): Array que almacena objetos con Nombre, Cantidad y Valor de Cryptomonedas.
+
+cryptomonedas_nombres = []
+cryptomonedas_valor = []
+cryptomonedas_cantidad = []
+
+for (let el in case_3_1){
+    cryptomonedas_nombres =         push(case_3_1.asset_input_name);
+    cryptomonedas_valor =           push(case_3_1.asset_input_amount);
+    cryptomonedas_cantidad =        push(case_3_1.asset_input_value);
+}
 
 
+//ME QUEDAN LOS SIGUIENTES ARRAYS Y VARIABLES ARMADOS PARA LUEGO PASAR DATOS PUNTUALES AL HTML. LAS VARIABLES TIENEN NOMBRES MAS
+//AMIGABLES Y FACILES DE MANEJAR
+
+//VARIABLES 
+(pesos_nombre)         
+(pesos_cantidad)       
+(pesos_valor)        
+
+(PF_nombre)
+(PF_cantidad)          
+(PF_valor)            
+
+(dolares_nombre)
+(dolares_cantidad)
+(dolares_valor)    
+
+//ARRAYS
+(acciones_pesos_nombres)
+(acciones_pesos_valor)
+(acciones_pesos_cantidad)
+
+(acciones_dolares_nombres)
+(acciones_dolares_valor)
+(acciones_dolares_cantidad)
+
+(otras_monedas_nombres)
+(otras_monedas_valor)
+(otras_monedas_cantidad)
+
+(cryptomonedas_nombres)
+(cryptomonedas_valor)
+(cryptomonedas_cantidad)
+
+
+//HASTA AQUI ESTA TODO PLANTEADO Y ORGANIZADO PARA MANDAR LA INFORMACION AL HTML MEDIANTE MANIPULACION DE DOM
