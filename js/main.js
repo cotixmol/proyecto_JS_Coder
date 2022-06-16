@@ -387,7 +387,7 @@ console.log(case_2_1_asset) //Nombre, Cantidad y Valor de $USD en efectivo/depos
 
 //ESTOS 4 ARRAYS QUE CONTIENEN OBJETOS SON LOS QUE TRABAJAREMOS PARA PODER MODIFICAR VALORES EN HTML Y MOSTRARLE RESULTADOS AL USUARIO.
 
-console.log(case_1_3); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $ARS.
+console.log(case_1_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $ARS.
 console.log(case_2_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $USD.
 console.log(case_2_2); //Array que almacena objetos con Nombre, Cantidad y Valor de otras monedas FIAT.
 console.log(case_3_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Cryptomonedas.
