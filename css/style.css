@@ -13,16 +13,17 @@ body{
 
 /* BLOQUE DE NAV */
 /* Acomodamos la estructura NAV*/
+/*Color del texto rojo en la explicacion de la pagina*/
 .greeting span .versión{
     color:rgb(251,94,107);
 }
 
+/* Titulo*/
 nav h1{
     display:flex;
     justify-content: center;
     padding: 1.2em;
-    border-bottom: #BFD7EA 1px solid;
-    width: 100%;
+    border-bottom: #BFD7EA 1px solid;;
     font-size: 2em;
 }
 /* Animación titulo */
@@ -32,6 +33,7 @@ nav h1:hover{
 }
 
 /* BLOQUE DE MAIN */
+/*Aca estaran los ingresos de dinero del usuario*/
 .activos{
     border-top: #BFD7EA 1px solid;
     padding-top:1em;
@@ -39,24 +41,56 @@ nav h1:hover{
     padding-right:1em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    min-width: 500px;
+    min-width: 600px;
 } 
-
+/*Titulos de los activos que puede ingresar el usuario*/
 .titulo_moneda_nacional,.titulo_moneda_extranjera,.titulo_cryptomonedas{
     display:flex;
     justify-content: center;
 }
 
-
-.greeting{
+#start_blocks{
+    max-height: 100px;
+    min-height: 100px;
+}
+/*Bloque que le da iguales propiedades a la descripcion de la pagina y a los inputs iniciales*/
+.greeting,.supra_main{
     width: 50vw;
-    padding-top:2vh;
-    padding-bottom:5vh;
+    padding-top:1vh;
+    padding-bottom:3vh;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-size: 1.2em;
     
+}
+/* Estilo de los botones de next y previous*/
+#next_button,#prev_button{
+	background: none;
+    color: rgb(251,94,107);
+	border: none;
+	padding:1em;
+	font: inherit;  
+	cursor: pointer;
+}
+#next_button:active,#prev_button:active{
+    background-color: #BFD7EA;
+}
+#next_prev_button{
+    height:auto;
+}
+
+/* Los puse uno al lado del otro con un inline, sino quedaban en bloque*/
+#next_prev_buttons div{
+    display: inline;
+}
+
+/* Estilo para los inputs de texto iniciales*/
+#user_name_input,#dolar_value_input,#interest_rate_input{
+    background: white;
+	padding:0.3em;
+    margin:0.3em;
+	font: inherit;  
 }
 
 /* BLOQUE DE FOOTER */

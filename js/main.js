@@ -1,3 +1,4 @@
+/*
 //VARIABLES GLOBALES PARTE 2 CODIGO.
 let case_1_1_asset={}; //Objeto que tiene los $ARS en efectivo
 let case_1_2_asset={}; //Objeto que tiene los Plazo Fijo $ARS
@@ -12,11 +13,6 @@ let case_3={}; //Objeto que almacena temporalmente el valor de las cryptomonedas
 
 
 //FUNCIONES DEL CODIGO
-// 1) Función para ingresar el valor de un activo y retornarlo:
-function user_price_input(a){
-    asset_value=parseInt(prompt("Ingrese el valor actual de: "+a+"."));
-    return asset_value
-}
 // 2) Función para confirmar que el usuario ingreso correctamente retonando un valor "Si","No" u otro:
 function confirm(a){
     return(user_confirmation = prompt("El valor ingresado es "+a+". ¿Es correcto? (Si/No)"));
@@ -48,27 +44,68 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_amount=asset_input_amount;
     this.asset_input_value=asset_input_value;
 }
-
+*/
 
 //PARTE 1. INICIO DE APLICACION
+//Estructuro los saludos iniciales e ingresos iniciales con DOM
 
-alert("Bienvenido a la v.0.1 de su Cartera de Inversiones!\nA traves de una serie de preguntas intentaremos analizar su cartera de inversiones de una forma resumida y practica.");
+//Contador para el bloque de saludos e ingreso de datos principales
+let start_block_counter=0
 
-//Solicitud Nombre Usuario
-let user_name = prompt("Por favor, ingrese su nombre:")
-let user_confirmation="";
-//Confirmamos con el usuario si lo que ingreso es correcto.
-while (user_confirmation!="Si"){
-    confirm(user_name); //Funcion 2
-    //En la función 3 devuelvo los valores con un array, tengo que asignarlos a variables.
-    let func_return=user_confirm_func(user_name,"Tu nombre"); //Funcion 3        
-    user_name=func_return[1];
-    user_confirmation=func_return[0];
-} 
+//Genero una lista de los textos que quiero ir mostrando a medida que se hace click en siguiente.
+const app_start_block=[
+    "Bienvenido a la v.0.1 de su Cartera de Inversiones!",
+    "A traves de una serie de preguntas intentaremos analizar su cartera de inversiones de una forma resumida y practica.",
+    "Por favor, ingrese su nombre:",
+    "Perfecto, +user_name+. Ahora vamos a ingresar 2 variables macroeconomicas",
+    "Ingrese el valor actual de: Dolar/Peso",
+    "Ingrese el valor actual de: Tasa de Interes"
+]
+//Genero una lista de los inputs que quiero ir mostrando a medida que se hace click en siguiente.
+const app_start_block_inputs=[
+    "",
+    "",
+    "<input id='user_name_input' type=\"text\">",
+    "",
+    "<input id='dolar_value_input' type=\"number\">",
+    "<input id='interest_rate_input' type=\"number\">"
+]
 
+//Inicio la aplicacion modificando el HTML con el indice 0 de de la lista app_start_block.
+document.getElementById("start_block").innerHTML = app_start_block[start_block_counter];
+document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter];
+
+//Genero un evento donde al clickear modifica el HTML con el siguiente elemento de la lista app_start_block y la lista app_start_block_inputs. Estan sincronizadas para que aparezcan las opciones.
+document.getElementById("next_button").addEventListener("click", ()=>{
+    document.getElementById("start_block").innerHTML = app_start_block[start_block_counter+1]
+    document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter+1]
+    start_block_counter+=1
+});
+document.getElementById("prev_button").addEventListener("click", ()=>{
+    document.getElementById("start_block").innerHTML = app_start_block[start_block_counter-1]
+    document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter-1]
+    start_block_counter-=1
+});
+
+
+
+//¿COMO LIMINAR BOTONES CUANDO NO HAYA QUE IR MAS ALLA...?
+
+//VALIDACIÓN Y GUARDADO DE LA ENTRADA DEL USUARIO...
+
+//VALIDACIÓN Y GUARDADO DE LA ENTRADA DEL PRECIO DEL DOLAR...
+
+//VALIDACIÓN Y GUARDADO DE LA ENTRADA DE LA TASA DE INTERES...
+
+
+
+
+
+
+
+
+/*
 //Solicitud de Datos principales (Dolar y Tasa de Interes)
-
-alert("Perfecto, "+user_name+". Ahora vamos a ingresar 2 variables macroeconomicas: Valor del dolar y Tasa de Interes.");
 
 //Solicitud de valor del Dolar
 user_confirmation="";
@@ -509,3 +546,5 @@ for (let el in case_3_1){
 
 
 //HASTA AQUI ESTA TODO PLANTEADO Y ORGANIZADO PARA MANDAR LA INFORMACION AL HTML MEDIANTE MANIPULACION DE DOM
+
+*/
