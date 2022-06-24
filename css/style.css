@@ -54,10 +54,10 @@ nav h1:hover{
     min-height: 100px;
 }
 /*Bloque que le da iguales propiedades a la descripcion de la pagina y a los inputs iniciales*/
-.greeting,.supra_main{
+.supra_main{
     width: 50vw;
     padding-top:1vh;
-    padding-bottom:3vh;
+    margin-bottom:2vh;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -65,7 +65,7 @@ nav h1:hover{
     
 }
 /* Estilo de los botones de next y previous*/
-#next_button,#prev_button{
+#next_button,#next_button_div{
 	background: none;
     color: rgb(251,94,107);
 	border: none;
@@ -73,7 +73,7 @@ nav h1:hover{
 	font: inherit;  
 	cursor: pointer;
 }
-#next_button:active,#prev_button:active{
+#next_button:active{
     background-color: #BFD7EA;
 }
 #next_prev_button{
@@ -81,9 +81,6 @@ nav h1:hover{
 }
 
 /* Los puse uno al lado del otro con un inline, sino quedaban en bloque*/
-#next_prev_buttons div{
-    display: inline;
-}
 
 /* Estilo para los inputs de texto iniciales*/
 #user_name_input,#dolar_value_input,#interest_rate_input{
@@ -91,6 +88,7 @@ nav h1:hover{
 	padding:0.3em;
     margin:0.3em;
 	font: inherit;  
+    color:#0B0033;
 }
 
 /* BLOQUE DE FOOTER */

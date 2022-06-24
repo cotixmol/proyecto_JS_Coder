@@ -45,63 +45,63 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_value=asset_input_value;
 }
 */
-
 //PARTE 1. INICIO DE APLICACION
-//Estructuro los saludos iniciales e ingresos iniciales con DOM
 
+//Estructuro los saludos iniciales e ingresos iniciales con DOM
 //Contador para el bloque de saludos e ingreso de datos principales
 let start_block_counter=0
 
 //Genero una lista de los textos que quiero ir mostrando a medida que se hace click en siguiente.
 const app_start_block=[
-    "Bienvenido a la v.0.1 de su Cartera de Inversiones!",
-    "A traves de una serie de preguntas intentaremos analizar su cartera de inversiones de una forma resumida y practica.",
-    "Por favor, ingrese su nombre:",
-    "Perfecto, +user_name+. Ahora vamos a ingresar 2 variables macroeconomicas",
-    "Ingrese el valor actual de: Dolar/Peso",
-    "Ingrese el valor actual de: Tasa de Interes"
+    "Bienvenido a la aplicación web que determina su cartera de activos. A traves de una serie de preguntas intentaremos analizar su cartera de inversiones de una forma resumida y practica.",
+    "Para comenzar, ingrese su nombre",
+    "Perfecto. Ahora vamos a ingresar 2 variables macroeconomicas que tienen que ver en gran medida con la realidad del pais'",
+    "Ingrese la cotización actual del Dolar",
+    "Ingrese la tasa de interes actual",
+    "Perfecto, ya ingreso todo lo necesario. Continuemos con la siguiente parte"
 ]
 //Genero una lista de los inputs que quiero ir mostrando a medida que se hace click en siguiente.
 const app_start_block_inputs=[
     "",
+    "<input id='user_name_input' placeholder='Ingrese su nombre' type='text'>",
     "",
-    "<input id='user_name_input' type=\"text\">",
-    "",
-    "<input id='dolar_value_input' type=\"number\">",
-    "<input id='interest_rate_input' type=\"number\">"
+    "<input id='dolar_value_input' placeholder='Valor $USD/$ARS' type='number'>",
+    "<input id='interest_rate_input' placeholder='Tasa de Interes' type='number'>",
+    ""
 ]
 
 //Inicio la aplicacion modificando el HTML con el indice 0 de de la lista app_start_block.
 document.getElementById("start_block").innerHTML = app_start_block[start_block_counter];
 document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter];
 
-//Genero un evento donde al clickear modifica el HTML con el siguiente elemento de la lista app_start_block y la lista app_start_block_inputs. Estan sincronizadas para que aparezcan las opciones.
+
+//Genero un evento donde al clickear modifica el HTML con el siguiente elemento de la lista app_start_block y la lista app_start_block_inputs. 
+//Estan sincronizadas para que aparezcan las opciones.
+initial_variables=[]
+initial_variables_counter=0
+
+//Genero un evento que al hacer click cambie los elementos de las listas app_start_block y app_start_block_inputs. Como estan sincronizados se muestran como corresponde
+//Luego genero una variable que toma el hijo del bloque de html con id start_block_inputs, ve si esta definido o no. En caso de estar definido, siempre es un input.
+//Tomamos el valor con e.target.value y lo aplicamos al item 0, 1 y 2 de una lista llamada initial_variables
+//Luego los elementos de esta lista los llevamos a variables.
+
 document.getElementById("next_button").addEventListener("click", ()=>{
-    document.getElementById("start_block").innerHTML = app_start_block[start_block_counter+1]
-    document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter+1]
-    start_block_counter+=1
+        document.getElementById("start_block").innerHTML = app_start_block[start_block_counter+1]
+        document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter+1]
+        start_block_counter+=1
+    
+        const input = document.getElementById("start_block_inputs").children[0];  
+            if (input != undefined) {
+                input.addEventListener('change', (e) => {
+                initial_variables[initial_variables_counter]=e.target.value;
+                initial_variables_counter+=1;
+        })
+    }
+        //Elimino la flecha al llegar al ultimo
+        if (start_block_counter>=app_start_block.length-1){
+            document.getElementById("next_button_div").innerHTML="";
+    }
 });
-document.getElementById("prev_button").addEventListener("click", ()=>{
-    document.getElementById("start_block").innerHTML = app_start_block[start_block_counter-1]
-    document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter-1]
-    start_block_counter-=1
-});
-
-
-
-//¿COMO LIMINAR BOTONES CUANDO NO HAYA QUE IR MAS ALLA...?
-
-//VALIDACIÓN Y GUARDADO DE LA ENTRADA DEL USUARIO...
-
-//VALIDACIÓN Y GUARDADO DE LA ENTRADA DEL PRECIO DEL DOLAR...
-
-//VALIDACIÓN Y GUARDADO DE LA ENTRADA DE LA TASA DE INTERES...
-
-
-
-
-
-
 
 
 /*
