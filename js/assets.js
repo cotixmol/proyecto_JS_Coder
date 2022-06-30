@@ -8,7 +8,7 @@ let dolar_value = initial_variables.dolar_value;
 let interest_rate = initial_variables.interest_rate;
 
 //Cambio la barra de la información en base a los datos que ingreso el usuario.
-document.getElementById("welcome_user").innerHTML = "Bienvenidx "+user_name+".";
+document.getElementById("welcome_user").innerHTML = "Te damos la bienvenida "+user_name+".";
 document.getElementById("dolar_value_tag").innerHTML = "Dolar: $"+parseInt(dolar_value)+".";
 document.getElementById("interest_rate_tag").innerHTML = "Tasa de Interes: "+parseInt(interest_rate)+"%.";
 
