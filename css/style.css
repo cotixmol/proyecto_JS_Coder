@@ -9,97 +9,125 @@
 /* COLOR DE FONDO */
 body{
     background-color: #0B0033;
+    height: 100vh;
 }
 
-/* BLOQUE DE NAV */
-/* Acomodamos la estructura NAV*/
-/*Color del texto rojo en la explicacion de la pagina*/
-.greeting span .versión{
-    color:rgb(251,94,107);
-}
-
-/* Titulo*/
+/* TITULO DE LA PAGINA */
 nav h1{
     display:flex;
     justify-content: center;
-    padding: 1.2em;
+    padding: 1em;
     border-bottom: #BFD7EA 1px solid;;
-    font-size: 2em;
+    font-size: 1.8em;
 }
-/* Animación titulo */
+
+/* ANIMACIÓN DEL TITULO DE LA PAGINA */
 nav h1:hover{
     background-color: #BFD7EA;
     color:#0B0033;
 }
 
-/* BLOQUE DE MAIN */
-/*Aca estaran los ingresos de dinero del usuario*/
-.activos{
-    border-top: #BFD7EA 1px solid;
-    padding-top:1em;
-    padding-left: 1em;
-    padding-right:1em;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    min-width: 600px;
-} 
-/*Titulos de los activos que puede ingresar el usuario*/
-.titulo_moneda_nacional,.titulo_moneda_extranjera,.titulo_cryptomonedas{
-    display:flex;
-    justify-content: center;
+/* BLOQUE DE FOOTER */
+footer{
+    background-color: #BFD7EA;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    padding: 0.3em;
+}
+footer p,footer p a{
+    color: #0B0033;
 }
 
-#start_blocks{
-    max-height: 100px;
-    min-height: 100px;
+/* INDEX.HTML */
+/* TEXTO DE BIENVENIDA */
+aside p{
+    max-height: 175px;
+    min-height: 175px;
+    width: 60vh;
+    font-size: 1.4em;
+    padding-bottom:1em;
 }
-/*Bloque que le da iguales propiedades a la descripcion de la pagina y a los inputs iniciales*/
-.supra_main{
-    width: 50vw;
-    padding-top:1vh;
-    margin-bottom:2vh;
+
+/* ALINEACIÓN TEXTO, LABELS E INPUTS */
+aside p,.form_box{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+.form_box{
     font-size: 1.2em;
-    
-}
-/* Estilo de los botones de next y previous*/
-#next_button,#next_button_div{
-	background: none;
-    color: rgb(251,94,107);
-	border: none;
-	padding:1em;
-	font: inherit;  
-	cursor: pointer;
-}
-#next_button:active{
-    background-color: #BFD7EA;
-}
-#next_prev_button{
-    height:auto;
 }
 
-/* Los puse uno al lado del otro con un inline, sino quedaban en bloque*/
-
-/* Estilo para los inputs de texto iniciales*/
-#user_name_input,#dolar_value_input,#interest_rate_input{
-    background: white;
+/* INPUTS DE INGRESO */
+#user_name,#dolar_value,#interest_rate{
 	padding:0.3em;
     margin:0.3em;
 	font: inherit;  
     color:#0B0033;
 }
 
-/* BLOQUE DE FOOTER */
-footer{
-    background-color: #0B0033;
+#next_step_btn{
+	background: none;
+	border: none;
+	padding: 1em;
+	font: inherit;
+	cursor: pointer;
+    color: rgb(235, 64, 52);
+}
+#next_step_btn:active{
+	background: white;
+}
+
+/* ASSETS.HTML */
+/* Barra donde esta la primera información insertada por el usuario */
+#initial_variables_box{
+    display:flex;
+    justify-content: space-between;
+    padding-left:1em;
+    padding-right:1em;
+}
+
+.to_correct_values{
+    font-size: 0.6em;
+    text-align: end;
+    padding:1em;
+}
+
+/* Bloque de opciones de monedas */
+#block_currency{
+    border-top:#BFD7EA 1px solid;
+    display:flex;
+    justify-content:space-around;
+    padding-top:2em;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+#local_currency p,#foreign_currency p,#crypto_currency p{
+    padding-top:2em;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding-bottom: 2em;
+}
+#patrimonio_box{
     position:fixed;
-    bottom:0;
+    bottom: 25px; 
     width:100%;
 }
 
+#patrimonio_box p{
+    padding-bottom: 1em;
+}
 
-
-
-
+#yes_btn_local,#no_btn_local,#yes_btn_foreign,#no_btn_foreign,#yes_btn_crypto,#no_btn_crypto{
+	background: none;
+	border: none;
+	padding: 1em;
+	font: inherit;
+	cursor: pointer;
+    color: rgb(235, 64, 52);
+}
+#yes_btn_local:active,#no_btn_local:active,#yes_btn_foreign:active,#no_btn_foreign:active,#yes_btn_crypto:active,#no_btn_crypto:active{
+    background: white;
+}

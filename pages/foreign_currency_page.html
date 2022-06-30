@@ -5,8 +5,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
         <title>Mi Cartera de Inversión</title>
-        <link rel="stylesheet" href="./css/style.css">
-        <link rel="icon" href="./images/favicon/favicon-32x32.png">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="icon" href="../images/favicon/favicon-32x32.png">
     
     </head>
     <body>
@@ -69,36 +69,20 @@
                 }
                     </script>
         </div>
-        <aside>
-            <p>
-            Bienvenidx a la aplicación web para calcular su cartera de inversiones.<br>
-            Calcularemos su patrimonio en base a el ingreso de distintos tipos de activos.<br>
-            Para iniciar seleccione cada campo y completelo.
-            </p>
-        </aside>
-        <main id="block_inputs">
-            <form action=""></form>
-                <div class="form_box">
-                    <label id="user_name_label" for="user_name">Nombre del Usuario</label>
-                    <input id="user_name" type="text" placeholder="Nombre y Apellido">
-                </div>
-                <div class="form_box">
-                    <label id="dolar_value_label" for="dolar_value">Valor del Dolar &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                    <input id="dolar_value" type="text" placeholder="Valor $ARS/$USD">
-                </div>
-                <div class="form_box">
-                    <label id="interest_rate_label" for="interest_rate">Tasa de Interes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
-                    <input id="interest_rate" type="text" placeholder="Valor Anual T.I.">
-                </div>
-                <div class="form_box">
-                    <button id="next_step_btn">Click para continuar</button>
-                </div>
-            </form>
-        </main>
-
+        <div id="initial_variables_box">
+            <object id="welcome_user"></object>
+            <object id="dolar_value_tag"></object>
+            <object id="interest_rate_tag"></object>
+        </div>
+        
+        <div id="patrimonio_box">
+            <p id="pesos_patrimonio">Patrimonio en pesos:</p>
+            <p id="dolares_patrimonio">Patrimonio en dolares:</p>
+            <p id="btc_patrimonio">Patrimonio en BTC:</p>
+        </div>
         <footer>
             <p>Copyright &copy <a href="https://www.linkedin.com/in/constancio-molinengo/">Constancio Molinengo</a>.</p>
         </footer>
-        <script src="./js/index.js"></script>
+        <script href="../js/foreign_currency.js"></script>
     </body>
 </html>

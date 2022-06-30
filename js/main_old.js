@@ -1,4 +1,6 @@
-/*
+//CODIGO VIEJO ANTERIOR A SABER MANIPULAR DOM, ESTOY RECODEANDO TODO PARA QUE SEA COMO DEBE SER
+
+
 //VARIABLES GLOBALES PARTE 2 CODIGO.
 let case_1_1_asset={}; //Objeto que tiene los $ARS en efectivo
 let case_1_2_asset={}; //Objeto que tiene los Plazo Fijo $ARS
@@ -12,31 +14,6 @@ let case_2={}; //Objeto que almacena temporalmente el valor de las acciones o bo
 let case_3={}; //Objeto que almacena temporalmente el valor de las cryptomonedas en $USD para luego push al objeto
 
 
-//FUNCIONES DEL CODIGO
-// 2) Función para confirmar que el usuario ingreso correctamente retonando un valor "Si","No" u otro:
-function confirm(a){
-    return(user_confirmation = prompt("El valor ingresado es "+a+". ¿Es correcto? (Si/No)"));
-};
-// 3) Función que comprueba la respuesta anterior, dando la posibilidad de reingreso de la variable b o indicando que tiene que contestar con "Si" o con "No":
-function user_confirm_func(b,a){
-    if (user_confirmation=="Si" || user_confirmation=="SI" || user_confirmation=="si"){
-        user_confirmation="Si";
-    }else if (user_confirmation=="No" || user_confirmation=="NO" || user_confirmation=="no"){
-        b=prompt("Por favor, ingresa correctamente: "+a+".");
-    }else{
-        alert("Tenes que poner Si o No");
-    }
-    return [user_confirmation,b]; //Devuelvo los valores con un array
-}
-// 4) Funcion que uso para revisar si el usuario ingreso si o no. Al comprobarlo cambia a false la condicion del while local.
-function user_asset_input_check(a){
-    if ((a=="Si") || (a=="SI") || (a=="si") || (a=="No") || (a=="NO") || (a=="no")){
-        return false;
-    }else{
-        alert('Tiene que ingresar Si o No')
-        return true;
-    }    
-}
 // 5) Funcion de construcción que uso para crear los objetos de inversion, cada uno tiene un nombre, valor y cantidad asociado.
 // Luego cada objeto ira a un array.
 function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
@@ -44,96 +21,6 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_amount=asset_input_amount;
     this.asset_input_value=asset_input_value;
 }
-*/
-//PARTE 1. INICIO DE APLICACION
-
-//Estructuro los saludos iniciales e ingresos iniciales con DOM
-//Contador para el bloque de saludos e ingreso de datos principales
-let start_block_counter=0
-
-//Genero una lista de los textos que quiero ir mostrando a medida que se hace click en siguiente.
-const app_start_block=[
-    "Bienvenido a la aplicación web que determina su cartera de activos. A traves de una serie de preguntas intentaremos analizar su cartera de inversiones de una forma resumida y practica.",
-    "Para comenzar, ingrese su nombre",
-    "Perfecto. Ahora vamos a ingresar 2 variables macroeconomicas que tienen que ver en gran medida con la realidad del pais'",
-    "Ingrese la cotización actual del Dolar",
-    "Ingrese la tasa de interes actual",
-    "Perfecto, ya ingreso todo lo necesario. Continuemos con la siguiente parte"
-]
-//Genero una lista de los inputs que quiero ir mostrando a medida que se hace click en siguiente.
-const app_start_block_inputs=[
-    "",
-    "<input id='user_name_input' placeholder='Ingrese su nombre' type='text'>",
-    "",
-    "<input id='dolar_value_input' placeholder='Valor $USD/$ARS' type='number'>",
-    "<input id='interest_rate_input' placeholder='Tasa de Interes' type='number'>",
-    ""
-]
-
-//Inicio la aplicacion modificando el HTML con el indice 0 de de la lista app_start_block.
-document.getElementById("start_block").innerHTML = app_start_block[start_block_counter];
-document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter];
-
-
-//Genero un evento donde al clickear modifica el HTML con el siguiente elemento de la lista app_start_block y la lista app_start_block_inputs. 
-//Estan sincronizadas para que aparezcan las opciones.
-initial_variables=[]
-initial_variables_counter=0
-
-//Genero un evento que al hacer click cambie los elementos de las listas app_start_block y app_start_block_inputs. Como estan sincronizados se muestran como corresponde
-//Luego genero una variable que toma el hijo del bloque de html con id start_block_inputs, ve si esta definido o no. En caso de estar definido, siempre es un input.
-//Tomamos el valor con e.target.value y lo aplicamos al item 0, 1 y 2 de una lista llamada initial_variables
-//Luego los elementos de esta lista los llevamos a variables.
-
-document.getElementById("next_button").addEventListener("click", ()=>{
-        document.getElementById("start_block").innerHTML = app_start_block[start_block_counter+1]
-        document.getElementById("start_block_inputs").innerHTML = app_start_block_inputs[start_block_counter+1]
-        start_block_counter+=1
-    
-        const input = document.getElementById("start_block_inputs").children[0];  
-            if (input != undefined) {
-                input.addEventListener('change', (e) => {
-                initial_variables[initial_variables_counter]=e.target.value;
-                initial_variables_counter+=1;
-        })
-    }
-        //Elimino la flecha al llegar al ultimo
-        if (start_block_counter>=app_start_block.length-1){
-            document.getElementById("next_button_div").innerHTML="";
-    }
-});
-
-
-/*
-//Solicitud de Datos principales (Dolar y Tasa de Interes)
-
-//Solicitud de valor del Dolar
-user_confirmation="";
-user_price_input("Dolar/Peso"); //Funcion 1. // Funcion para preguntar acerca de la cotización de un valor.
-let dolar_value=asset_value;    //Toma el return de la función y lo pone dentro de la variable
-//Confirmamos con el usuario si lo que ingreso es correcto.
-while (user_confirmation!="Si"){
-    confirm(dolar_value); //Funcion 2
-    //En la función 3 devuelvo los valores con un array, tengo que asignarlos a variables.                       
-    let func_return=user_confirm_func(dolar_value,"Dolar/Peso");  //Funcion 3      
-    dolar_value=func_return[1];
-    user_confirmation=func_return[0];    
-} 
-
-//Solicitud de valor Tasa de Interes
-user_confirmation="";
-
-user_price_input("Tasa de Interes"); //Funcion 1. // Funcion para preguntar acerca de la cotización de un valor.
-let interest_rate=asset_value;   //Toma el return de la función y lo pone dentro de la variable.
-//Confirmamos con el usuario si lo que ingreso es correcto.
-while (user_confirmation!="Si"){
-    confirm(interest_rate); //Funcion 2
-    //En la función 3 devuelvo los valores con un array, tengo que asignarlos a variables.                        
-    let func_return=user_confirm_func(interest_rate,"Tasa de Interes"); //Funcion 3      
-    interest_rate=func_return[1];
-    user_confirmation=func_return[0];
-} 
-
 //CREACION VARIABLES PARA LA PARTE 2 DEL CODIGO.
 let while_exit=true;
 let while_inner_exit=true;  //Valores para iniciar los ciclos while.
@@ -146,14 +33,9 @@ let asset_quantity=0; //Creo la variable que uso en los FOR
 
 // PARTE 2. TOMA DE INFORMACIÓN DE ACTIVOS.
 
-alert("Perfecto "+user_name+". Por ahora hemos creado una base para armar tu cartera de inversiones.\nAhora a completar la siguiente sección 🎉");
-
 //Empezamos a diferenciar distintos tipos de ahorros y los creamos como objetos. Estos objetos despues iran a un array donde seran
 //facilmente manejables.
 
-while(while_exit){
-    user_asset_analysis_input=prompt("¿Elija en que moneda esta ahorrando actualmente?\n1) Moneda Nacional ($ARS)\n2) Moneda Extranjera ($USD)\n3) Criptomonedas\nPara salir escriba cualquier otra cosa.");
-    //MONEDA NACIONAL ($ARS)
     if(user_asset_analysis_input=="1"){
             
         //PESOS EN EFECTIVO
@@ -546,5 +428,3 @@ for (let el in case_3_1){
 
 
 //HASTA AQUI ESTA TODO PLANTEADO Y ORGANIZADO PARA MANDAR LA INFORMACION AL HTML MEDIANTE MANIPULACION DE DOM
-
-*/
