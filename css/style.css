@@ -6,13 +6,14 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-/* COLOR DE FONDO */
+/*ESTILOS GENERALES*/
+/* Fondo */
 body{
     background-color: #0B0033;
     height: 100vh;
 }
 
-/* TITULO DE LA PAGINA */
+/* Titulo Superior */
 nav h1{
     display:flex;
     justify-content: center;
@@ -20,14 +21,13 @@ nav h1{
     border-bottom: #BFD7EA 1px solid;;
     font-size: 1.8em;
 }
-
-/* ANIMACIÓN DEL TITULO DE LA PAGINA */
 nav h1:hover{
     background-color: #BFD7EA;
     color:#0B0033;
 }
 
-/* BLOQUE DE FOOTER */
+
+/* Footer */
 footer{
     background-color: #BFD7EA;
     position:fixed;
@@ -40,7 +40,7 @@ footer p,footer p a{
 }
 
 /* INDEX.HTML */
-/* TEXTO DE BIENVENIDA */
+/* Bloque de Texto Inicial */
 aside p{
     max-height: 175px;
     min-height: 175px;
@@ -48,8 +48,7 @@ aside p{
     font-size: 1.4em;
     padding-bottom:1em;
 }
-
-/* ALINEACIÓN TEXTO, LABELS E INPUTS */
+/*Alineación Texto Inicial y Inputs*/
 aside p,.form_box{
     margin-left: auto;
     margin-right: auto;
@@ -57,16 +56,17 @@ aside p,.form_box{
 }
 .form_box{
     font-size: 1.2em;
+
 }
 
-/* INPUTS DE INGRESO */
+/* Ajustes Alineación Inputs */
 #user_name,#dolar_value,#interest_rate{
 	padding:0.3em;
     margin:0.3em;
 	font: inherit;  
     color:#0B0033;
 }
-
+/*Botones*/
 #next_step_btn{
 	background: none;
 	border: none;
@@ -77,57 +77,4 @@ aside p,.form_box{
 }
 #next_step_btn:active{
 	background: white;
-}
-
-/* ASSETS.HTML */
-/* Barra donde esta la primera información insertada por el usuario */
-#initial_variables_box{
-    display:flex;
-    justify-content: space-between;
-    padding-left:1em;
-    padding-right:1em;
-}
-
-.to_correct_values{
-    font-size: 0.6em;
-    text-align: end;
-    padding:1em;
-}
-
-/* Bloque de opciones de monedas */
-#block_currency{
-    border-top:#BFD7EA 1px solid;
-    display:flex;
-    justify-content:space-around;
-    padding-top:2em;
-    text-align: center;
-    font-size: 1.1em;
-}
-
-#local_currency p,#foreign_currency p,#crypto_currency p{
-    padding-top:2em;
-    font-size: 1.2em;
-    text-decoration: none;
-    padding-bottom: 2em;
-}
-#patrimonio_box{
-    position:fixed;
-    bottom: 25px; 
-    width:100%;
-}
-
-#patrimonio_box p{
-    padding-bottom: 1em;
-}
-
-#yes_btn_local,#no_btn_local,#yes_btn_foreign,#no_btn_foreign,#yes_btn_crypto,#no_btn_crypto{
-	background: none;
-	border: none;
-	padding: 1em;
-	font: inherit;
-	cursor: pointer;
-    color: rgb(235, 64, 52);
-}
-#yes_btn_local:active,#no_btn_local:active,#yes_btn_foreign:active,#no_btn_foreign:active,#yes_btn_crypto:active,#no_btn_crypto:active{
-    background: white;
 }

@@ -1,0 +1,51 @@
+/* ASSETS.HTML */
+/* Barra superior donde van los valores de nombre, dolar y tasa de interes*/
+#initial_variables_box{
+    display:flex;
+    justify-content: space-between;
+    padding-left:1em;
+    padding-right:1em;
+}
+/* Link para corregir valores */
+.to_correct_values{
+    font-size: 0.6em;
+    text-align: end;
+    padding:1em;
+}
+/* Alineacion de preguntas */
+#block_currency{
+    border-top:#BFD7EA 1px solid;
+    display:flex;
+    justify-content:space-around;
+    padding-top:2em;
+    text-align: center;
+    font-size: 1.1em;
+}
+#local_currency p,#foreign_currency p,#crypto_currency p{
+    padding-top:2em;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding-bottom: 2em;
+}
+/* Botones de las preguntas */
+#yes_btn_local,#no_btn_local,#yes_btn_foreign,#no_btn_foreign,#yes_btn_crypto,#no_btn_crypto{
+	background: none;
+	border: none;
+	padding: 1em;
+	font: inherit;
+	cursor: pointer;
+    color: rgb(235, 64, 52);
+}
+#yes_btn_local:active,#no_btn_local:active,#yes_btn_foreign:active,#no_btn_foreign:active,#yes_btn_crypto:active,#no_btn_crypto:active{
+    background: white;
+}
+
+/* Bloque inferior donde se ira mostrando el patrimonio del usuario */
+#patrimonio_box{
+    position:fixed;
+    bottom: 25px; 
+    width:100%;
+}
+#patrimonio_box p{
+    padding-bottom: 1em;
+}

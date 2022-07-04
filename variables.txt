@@ -1,0 +1,47 @@
+//ESTOS 3 OBJETOS ALMACENAN INFORMACION PARA TRABAJAR
+(case_1_1_asset) //Objeto Nombre, Cantidad y Valor de $ARS en efectivo/depositado
+(case_1_2_asset) //Objeto Nombre, Cantidad y Valor de Plazo Fijo $ARS
+(case_2_1_asset) //Objeto Nombre, Cantidad y Valor de $USD en efectivo/depositado
+
+//ESTOS 4 ARRAYS QUE CONTIENEN OBJETOS SON LOS QUE TRABAJAREMOS PARA PODER MODIFICAR VALORES EN HTML Y MOSTRARLE RESULTADOS AL USUARIO.
+(case_1_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $ARS.
+(case_2_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Acciones/Bonos en $USD.
+(case_2_2); //Array que almacena objetos con Nombre, Cantidad y Valor de otras monedas FIAT.
+(case_3_1); //Array que almacena objetos con Nombre, Cantidad y Valor de Cryptomonedas.
+
+
+//NOMBRE DE LAS PROPIEDADES DENTRO DE CADA OBJETO
+(asset_input_name)
+(asset_input_amount)
+(asset_input_value)
+
+
+//VARIABLES 
+(pesos_nombre)         
+(pesos_cantidad)       
+(pesos_valor)        
+
+(PF_nombre)
+(PF_cantidad)          
+(PF_valor)            
+
+(dolares_nombre)
+(dolares_cantidad)
+(dolares_valor)    
+
+//ARRAYS
+(acciones_pesos_nombres)
+(acciones_pesos_valor)
+(acciones_pesos_cantidad)
+
+(acciones_dolares_nombres)
+(acciones_dolares_valor)
+(acciones_dolares_cantidad)
+
+(otras_monedas_nombres)
+(otras_monedas_valor)
+(otras_monedas_cantidad)
+
+(cryptomonedas_nombres)
+(cryptomonedas_valor)
+(cryptomonedas_cantidad)
