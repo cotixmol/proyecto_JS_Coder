@@ -19,19 +19,19 @@ let asset_quantity=0;       //Cantidad de Activos de un mismo tipo
 //Pesos Depositados
 //Genero la funcion que guarda lo ingresado por el usuario en el formulario.
 const save_asset_data_pesos_1 = (e) =>{
-    e.preventDefault();                                                                 //No manda el formulario.
-    asset_input_amount = document.getElementById("pesos_input_amount").value;           //Guardo el valor ingresado en la variable.
+    e.preventDefault();                                                                         //Previene que el formulario se reinicie.
+    asset_input_amount = document.getElementById("pesos_input_amount").value;                   //Guardo el valor ingresado en el input.
     document.querySelector("form").reset();                                             //Resetea el formulario.
-    localStorage.setItem("Cantidad de Pesos", JSON.stringify(asset_input_amount));      //Guarda la variable como string en LocalStorage. Luego lo vuelvo a usar.
+    localStorage.setItem("Pesos Depositados", JSON.stringify(asset_input_amount));      //Guarda la variable como string en LocalStorage. Luego lo vuelvo a usar.
     
-    asset_input_amount= JSON.parse(localStorage.getItem("Cantidad de Pesos"));          //Tomo el valor del Local Storage y lo aplico a la variable.
+    asset_input_amount= JSON.parse(localStorage.getItem("Pesos Depositados"));          //Tomo el valor del Local Storage y lo aplico a la variable.
     asset_input_name="$ARS";                                                            //Nombre del activo. Es fijo
     asset_input_value=1;                                                                //Valor del activo. Es fijo
 
     case_1_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value); //Creo un objeto para almacenar esta informacion.
     
-    form_pesos_depositados = document.querySelector("#form_pesos_depositados");
-    form_plazo_fijo  = document.querySelector("#form_plazo_fijo");
+    const form_pesos_depositados = document.querySelector("#form_pesos_depositados");
+    const form_plazo_fijo  = document.querySelector("#form_plazo_fijo");
 
     form_pesos_depositados.style.display="none";
     form_plazo_fijo.style.display="block";
@@ -40,41 +40,97 @@ const save_asset_data_pesos_1 = (e) =>{
 document.getElementById("pesos_1_next_step_btn").addEventListener("click",save_asset_data_pesos_1);     //Evento que al clickear ejecuta la funcion creada.
 
 
+//Plazo Fijo
+//Genero la funcion que guarda lo ingresado por el usuario en el formulario.
+const save_asset_data_pesos_2 = (e) =>{
+    e.preventDefault();                                                                         //No manda el formulario.
+    asset_input_amount = document.getElementById("plazo_fijo_input_amount").value;                   //Guardo el valor ingresado en la variable.
+    document.querySelector("form").reset();                                                     //Resetea el formulario.
+    localStorage.setItem("Plazo Fijo", JSON.stringify(asset_input_amount));                     //Guarda la variable como string en LocalStorage. Luego lo vuelvo a usar.
+    
+    asset_input_amount= JSON.parse(localStorage.getItem("Plazo Fijo"));                         //Tomo el valor del Local Storage y lo aplico a la variable.
+    asset_input_name="P.F. $ARS";                                                               //Nombre del activo. Es fijo
+    asset_input_value=1;                                                                        //Valor del activo. Es fijo
+
+    case_1_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value);  //Creo un objeto para almacenar esta informacion.
+    
+    const form_plazo_fijo = document.querySelector("#form_plazo_fijo");
+    const form_bonos_acciones_cantidad  = document.querySelector("#form_bonos_acciones_cantidad");
+
+    form_plazo_fijo.style.display="none";
+    form_bonos_acciones_cantidad.style.display="block";
+}
+
+document.getElementById("pesos_2_next_step_btn").addEventListener("click",save_asset_data_pesos_2);     //Evento que al clickear ejecuta la funcion creada.
 
 
 
+//Bonos y Acciones
+//Estructura para armar Inputs de Bonos y Acciones
+let string_input_bonos_pesos="";
 
-//Creo un objeto con el constructor dada tres propiedades del activo: Nombre, Cantidad, Valor.
+function string_input(parametro){
+    string_input_bonos_pesos="<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre del Bono o Accion no. "+parametro+"</p></div><div class='form_box'><label>Nombre del Bono/Acción</label><input id='bonos_acciones_input_name_"+parametro+"' type='text' placeholder='Nombre Activo'></div><div class='form_box'><label>Cantidad de Bonos/Acciones &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input id='bonos_acciones_input_amount"+parametro+"' type='number' placeholder='Cantidad de Activos'></div><div class='form_box'><label>Valor del Bono/Acción &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label><input id='bonos_acciones_input_value"+parametro+"' type='number' placeholder='Valor del activo'></div>";
+}
+
+let forms_bonos_box=document.getElementById("forms_bonos_acciones_pesos");
+
+const save_asset_data_pesos_3 = (e) =>{
+    e.preventDefault();   
+    asset_quantity=JSON.parse(localStorage.getItem("Contador"))
+    document.querySelector("form").reset();  
+
+    const form_bonos_acciones_cantidad  = document.querySelector("#form_bonos_acciones_cantidad");
+    const form_bonos_acciones = document.querySelector("#form_bonos_acciones");
+
+    form_bonos_acciones_cantidad.style.display="none";
+    form_bonos_acciones.style.display="block";
+    
+    for(let i=1;i<=asset_quantity;i++){
+        string_input(i);
+        forms_bonos_box.innerHTML += string_input_bonos_pesos;
+    }
+
+}
+
+document.getElementById("pesos_3_next_step_btn").addEventListener("click",save_asset_data_pesos_3);
+
+
+//Estructura para tomar datos de los inputs de acciones y bonos a partir del boton de Continuar
+//Falta hacer
+
+/*
+    const save_asset_data_pesos_4 = (e) =>{
+        for (let i=1;i<=asset_quantity;i++){
+        e.preventDefault(); 
+        document.querySelector("form").reset();  
+
+        asset_input_name = document.getElementById("plazo_fijo_input_amount").value;  
+        asset_input_amount = document.getElementById("plazo_fijo_input_amount").value;  
+        asset_input_value = document.getElementById("plazo_fijo_input_amount").value;  
+
+        localStorage.setItem("Nombre Bono/Accion en Pesos", JSON.stringify(asset_input_name));
+        localStorage.setItem("Cantidad Bono/Acción en Pesos", JSON.stringify(asset_input_amount)); 
+        localStorage.setItem("Valor Bono/Accion en Pesos", JSON.stringify(asset_input_value));  
+
+        asset_input_name= JSON.parse(localStorage.getItem("Nombre Bono/Accion en Pesos")); 
+        asset_input_amount= JSON.parse(localStorage.getItem("Cantidad Bono/Acción en Pesos")); 
+        asset_input_value= JSON.parse(localStorage.getItem("Valor Bono/Accion en Pesos")); 
+
+
+        case_1 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value);
+        case_1_1.push(case_1);
+        }
+}
+form_bonos_acciones.style.display="none";
+
+document.getElementById("pesos_4_next_step_btn").addEventListener("click",save_asset_data_pesos_4);
+
+
+
 
 
 /*
-//Plazo Fijo
-asset_input_amount=
-asset_input_name="Plazo Fijo $ARS"; 
-asset_input_value=1;
-
-case_1_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value); 
-//Creo un objeto con el constructor dada tres propiedades del activo: Nombre, Cantidad, Valor.
-
-
-
-//Acciones y Valores
-asset_quantity=parseInt(('Ingrese la cantidad de acciones o bonos que posee: '));
-
-//Hago un for con el cual creo los valores para un constructor y luego .push al array
-for (let stock_number=1;stock_number<=asset_quantity;stock_number++){
-    
-
-        asset_input_name=prompt('Escriba el nombre de la accion o bono no. '+stock_number+'.');
-        asset_input_amount=parseInt(prompt('Ingrese la cantidad que posee de '+asset_input_name+':'));
-        asset_input_value=parseInt(prompt('Ingrese el valor de la cotización de la accion '+asset_input_name+'.'))
-    }
-
-    
-    case_1 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value);
-    
-    case_1_1.push(case_1);
-
 
 //ACOMODAMOS LOS VALORES DENTRO DE LOS 3 PRIMEROS OBJETOS (case_1_1_asset), (case_1_2_asset) y (case_2_1_asset)
 //ASIGNACION DE VALORES DE LAS PROPIEDADES DE CADA OBJETO A VARIABLES MEJOR DEFINIDAS PARA EL USO

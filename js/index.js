@@ -1,5 +1,6 @@
-//Genero un objeto para almacenar variables iniciales
+//ESTA PARTE LA USO PARA ALMACENAR NOMBRE, DOLAR Y TASA DE INTERES.
 
+//Genero un objeto para almacenar variables iniciales
 let inicial_variables={};
 
 //Genero la funcion que guarda lo ingresado por el usuario en el formulario en pares clave-valor.
@@ -12,7 +13,7 @@ const saveInitialData = (e) =>{
     }
     document.querySelector("form").reset();                                             //Resetea el formulario.
     localStorage.setItem("Variables Iniciales", JSON.stringify(inicial_variables));     //Guarda el objeto como string en LocalStorage.
-    window.location.href="../pages/assets.html"                                                //Redirige a la siguiente pagina.
+    window.location.href="../pages/assets.html"                                         //Redirige a la siguiente pagina.
 }
 
 document.getElementById("next_step_btn").addEventListener("click",saveInitialData);     //Evento que al clickear ejecuta la funcion creada.

@@ -1,3 +1,6 @@
+//AUN NO ESTA TERMINADO. UNA VEZ TERMINADO "LOCAL_CURRENCY" ES SIMPLE DE COPIAR
+
+/*
 //Contructor para generar los objetos con el Nombre del Activo, Cantidad del Activo y Valor del Activo
 function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_name=asset_input_name;
@@ -41,3 +44,4 @@ for (let el in case_3_1){
     cryptomonedas_valor =           push(case_3_1.asset_input_amount);
     cryptomonedas_cantidad =        push(case_3_1.asset_input_value);
 }
+*/

@@ -80,7 +80,7 @@
                     <p>¿Cual es la cantidad de pesos que posee?</p>
                 </div>
                 <div class="form_box">
-                    <label for="dolar_value">Cantidad de Pesos &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <label for="">Cantidad de Pesos &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                     <input id="pesos_input_amount" type="text" placeholder="Cantidad de $ARS">
                 </div>
                 <div class="form_box">
@@ -90,50 +90,59 @@
     
             <form id="form_plazo_fijo" style="display:none" action="">
                 <div class="form_box">
-                    <label id="user_name_label" for="user_name">Nombre del Usuario</label>
-                    <input id="user_name" type="text" placeholder="Nombre y Apellido">
+                    <p>¿Cual es la cantidad de pesos que tiene en Plazo Fijo?</p>
                 </div>
                 <div class="form_box">
-                    <label id="dolar_value_label" for="dolar_value">Valor del Dolar &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                    <input id="dolar_value" type="text" placeholder="Valor $ARS/$USD">
-                </div>
-                <div class="form_box">
-                    <label id="interest_rate_label" for="interest_rate">Tasa de Interes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
-                    <input id="interest_rate" type="text" placeholder="Valor Anual T.I.">
+                    <label for="">Cantidad de Pesos en P.F. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <input id="plazo_fijo_input_amount" type="number" placeholder="$ARS en P.F">
                 </div>
                 <div class="form_box">
                     <button id="pesos_2_next_step_btn">Click para continuar</button>
                 </div>
             </form>
 
-        <form id="form_bonos_acciones" style="display:none" action="">
-            <div class="form_box">
-                <label id="user_name_label" for="user_name">Nombre del Usuario</label>
-                <input id="user_name" type="text" placeholder="Nombre y Apellido">
+        <form id="form_bonos_acciones_cantidad" style="display:none" action="">           
+            <div class="form_box">    
+                <p>¿Cuantos Bonos o Acciones tiene?</p>
+                <br>
+                <p id="contador">0</p>
             </div>
             <div class="form_box">
-                <label id="dolar_value_label" for="dolar_value">Valor del Dolar &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                <input id="dolar_value" type="text" placeholder="Valor $ARS/$USD">
-            </div>
-            <div class="form_box">
-                <label id="interest_rate_label" for="interest_rate">Tasa de Interes &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </label>
-                <input id="interest_rate" type="text" placeholder="Valor Anual T.I.">
+                <button type="button" class="btn reiniciar" id="contador_btn">Reiniciar</button>
+                <button type="button" class="btn sumar" id="contador_btn">+1</button>
             </div>
             <div class="form_box">
                 <button id="pesos_3_next_step_btn">Click para continuar</button>
             </div>
+        </form>  
+
+
+        <form id="form_bonos_acciones" style="display:none" action=""> 
+
+            <div id="forms_bonos_acciones_pesos">
+            </div>
+
+
+            <div class="form_box">
+                <button id="pesos_4_next_step_btn">Click para continuar</button>
+            </div>
+
         </form>
 
+
         </main>
+
         <div id="patrimonio_box">
             <p id="pesos_patrimonio">Patrimonio en pesos:</p>
             <p id="dolares_patrimonio">Patrimonio en dolares:</p>
             <p id="btc_patrimonio">Patrimonio en BTC:</p>
         </div>
+
         <footer>
             <p>Copyright &copy <a href="https://www.linkedin.com/in/constancio-molinengo/">Constancio Molinengo</a>.</p>
         </footer>
         <script src="../js/local_currency.js"></script>
         <script src="../js/initial_values.js"></script>
+        <script src="../js/contador.js"></script>
     </body>
 </html>
