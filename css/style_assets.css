@@ -28,13 +28,14 @@
     padding-bottom: 2em;
 }
 /* Botones de las preguntas */
-#yes_btn_local,#no_btn_local,#yes_btn_foreign,#no_btn_foreign,#yes_btn_crypto,#no_btn_crypto{
+#yes_btn_local,#no_btn_local,#yes_btn_foreign,#no_btn_foreign,#yes_btn_crypto,#no_btn_crypto,.yes_button{
 	background: none;
 	border: none;
 	padding: 1em;
 	font: inherit;
 	cursor: pointer;
     color: rgb(235, 64, 52);
+    text-decoration: none;
 }
 #yes_btn_local:active,#no_btn_local:active,#yes_btn_foreign:active,#no_btn_foreign:active,#yes_btn_crypto:active,#no_btn_crypto:active{
     background: white;
@@ -48,4 +49,8 @@
 }
 #patrimonio_box p{
     padding-bottom: 1em;
+}
+
+#main_box{
+    padding:3em;
 }

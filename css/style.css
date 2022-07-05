@@ -56,18 +56,18 @@ aside p,.form_box{
 }
 .form_box{
     font-size: 1.2em;
-
+    padding-top:1em;
 }
 
 /* Ajustes Alineación Inputs */
-#user_name,#dolar_value,#interest_rate{
+#user_name,#dolar_value,#interest_rate,#pesos_input_amount{
 	padding:0.3em;
     margin:0.3em;
 	font: inherit;  
     color:#0B0033;
 }
 /*Botones*/
-#next_step_btn{
+#next_step_btn,#pesos_1_next_step_btn,#pesos_2_next_step_btn,#pesos_3_next_step_btn{
 	background: none;
 	border: none;
 	padding: 1em;

@@ -1,3 +1,4 @@
+//Contructor para generar los objetos con el Nombre del Activo, Cantidad del Activo y Valor del Activo
 function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_name=asset_input_name;
     this.asset_input_amount=asset_input_amount;
