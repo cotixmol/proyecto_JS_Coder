@@ -13,7 +13,17 @@ const saveInitialData = (e) =>{
     }
     document.querySelector("form").reset();                                             //Resetea el formulario.
     localStorage.setItem("Variables Iniciales", JSON.stringify(inicial_variables));     //Guarda el objeto como string en LocalStorage.
-    window.location.href="../pages/assets.html"                                         //Redirige a la siguiente pagina.
+    //Si el usuario no relleno alguno de los campos, salta un alert.
+    if ((document.getElementById("user_name").value!="") && (document.getElementById("dolar_value").value!=0) && (document.getElementById("interest_rate").value!=0)){
+        window.location.href="../pages/assets.html"  
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Faltan Campos',
+            text: 'Ingresa todos los campos correctamente',
+        })
+    }
+                                       //Redirige a la siguiente pagina.
 }
 
 document.getElementById("next_step_btn").addEventListener("click",saveInitialData);     //Evento que al clickear ejecuta la funcion creada.

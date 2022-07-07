@@ -15,6 +15,13 @@ let asset_input_name="";    //Nombre del activo.
 let asset_input_value=0;    //Valor de un item predefinido, cuando no los tiene el usuario.
 let asset_quantity=0;       //Cantidad de Activos de un mismo tipo
 
+//Alert informando al usuario sobre esta seccion
+Swal.fire({
+    title: 'Moneda Local $ARS',
+    text: "En esta sección le consultaremos por depositos, plazo fijos y acciones/bonos que usted tenga.",
+    icon: 'question',
+    confirmButtonColor: '#0B0033',
+  })
 
 //Pesos Depositados
 //Genero la funcion que guarda lo ingresado por el usuario en el formulario.

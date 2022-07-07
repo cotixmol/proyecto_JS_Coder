@@ -1,4 +1,12 @@
 //USO ESTA PARTE PARA ELIMINAR LOS BLOQUES DE PREGUNTAS CUANDO PRESIONO "NO"
+//Sweet Alert
+Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Genial, continuemos',
+    showConfirmButton: false,
+    timer: 2000
+  })
 
 //Asigno a unas variables los bloques donde esta cada pregunta
 let local_currency_block = document.getElementById("local_currency")
