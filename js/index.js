@@ -1,5 +1,8 @@
 //ESTA PARTE LA USO PARA ALMACENAR NOMBRE, DOLAR Y TASA DE INTERES.
 
+//Limpio la memoria
+localStorage.clear()
+
 //Genero un objeto para almacenar variables iniciales
 let inicial_variables={};
 
@@ -21,6 +24,7 @@ const saveInitialData = (e) =>{
             icon: 'error',
             title: 'Faltan Campos',
             text: 'Ingresa todos los campos correctamente',
+            confirmButtonColor: '#0B0033',
         })
     }
                                        //Redirige a la siguiente pagina.

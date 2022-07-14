@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/style_assets.css">
         <link rel="icon" href="../images/favicon/favicon-32x32.png">
-    
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
     </head>
     <body>
         <nav>
@@ -76,16 +76,101 @@
             <object id="interest_rate_tag"></object>
         </div>
         
+        <!-- Estos forms iran desapareciendo y apareciendo a medida que hagamos click en el boton -->
+        <!-- Bloque de Dolares Depositados -->
+    <main id="main_box">
+        <form id="form_dolares_depositados" action="">
+            <div class="form_box">
+                <p>¿Cual es la cantidad de dolares que posee?</p>
+            </div>
+            <div class="form_box">
+                <label for="">Cantidad de Dolares </label>
+                <input id="dolares_input_amount" type="text" placeholder="Cantidad de $USD">
+            </div>
+            <div class="form_box">
+                <button id="dolares_1_next_step_btn">Click para continuar</button>
+            </div>
+        </form>
+
+        <!-- Bloque de Dolares en Plazo Fijo -->    
+        <form id="form_plazo_fijo_dolares" style="display:none" action="">
+            <div class="form_box">
+                <p>¿Cual es la cantidad de dolares que tiene en Plazo Fijo?</p>
+            </div>
+            <div class="form_box">
+                <label for="">Cantidad de Dolares en P.F.</label>
+                <input id="plazo_fijo_dolares_input_amount" type="number" placeholder="$USD en P.F">
+            </div>
+            <div class="form_box">
+                <button id="dolares_2_next_step_btn">Click para continuar</button>
+            </div>
+        </form>
+ 
+        <!-- Bloque de Otras Monedas -->
+        <!-- Contador de OTras Monedas -->
+        <form id="form_monedas_fiat_cantidad" style="display:none" action="">           
+            <div class="form_box">    
+                <p>¿Que cantidad de otras Divisas tiene?</p>
+                <br>
+                <p id="contador_2">0</p>
+            </div>
+            <div class="form_box">
+                <button type="button" class="btn reiniciar" id="contador_btn">Reiniciar</button>
+                <button type="button" class="btn sumar" id="contador_btn">+1</button>
+            </div>
+            <div class="form_box">
+                <button id="dolares_3_next_step_btn">Click para continuar</button>
+            </div>
+        </form>  
+
+        <!-- Otras Monedas-->
+        <form id="form_monedas_fiat" style="display:none" action=""> 
+            <div id="forms_monedas_fiat_dolares">
+            </div>
+            <div class="form_box">
+                <button id="dolares_4_next_step_btn">Click para continuar</button>
+            </div>
+        </form>
+
+        <!-- Bloque de Acciones o Bonos en Dolares -->
+        <!-- Contador de Bloques y Bonos en Dolares -->
+        <form id="form_bonos_acciones_dolares_cantidad" style="display:none" action="">           
+            <div class="form_box">    
+                <p>¿Cuantos Bonos o Acciones en Dolares tiene?</p>
+                <br>
+                <p id="contador_3">0</p>
+            </div>
+            <div class="form_box">
+                <button type="button" class="btn reiniciar" id="contador_btn">Reiniciar</button>
+                <button type="button" class="btn sumar" id="contador_btn">+1</button>
+            </div>
+            <div class="form_box">
+                <button id="dolares_5_next_step_btn">Click para continuar</button>
+            </div>
+        </form>  
+
+        <!-- Bloque de Bonos en Dolares-->
+        <form id="form_bonos_acciones_dolares" style="display:none" action=""> 
+            <div id="forms_bonos_acciones_dolares_dolares">
+            </div>
+            <div class="form_box">
+                <button id="dolares_6_next_step_btn">Click para continuar</button>
+            </div>
+        </form>
+    </main>
+
+        <!-- Resultados del Analisis -->
         <div id="patrimonio_box">
-            <p id="pesos_patrimonio">Patrimonio en pesos:</p>
-            <p id="dolares_patrimonio">Patrimonio en dolares:</p>
-            <p id="btc_patrimonio">Patrimonio en BTC:</p>
+            <p id="pesos_patrimonio">Patrimonio en pesos: <span>(Cantidad de Pesos)</span></p>
+            <p id="dolares_patrimonio">Patrimonio en dolares: <span>(Cantidad de Dolares)</span></p>
+            <p id="btc_patrimonio">Patrimonio en BTC: <span>(Cantidad de Bitcoin)</span></p>
         </div>
         <footer>
             <p>Copyright &copy <a href="https://www.linkedin.com/in/constancio-molinengo/">Constancio Molinengo</a>.</p>
         </footer>
-        <script src="../js/foreign_currency.js"></script>
-        <script src="../js/initial_values.js"></script>
-        <script src="../js/contador.js"></script>
+    <script src="../js/foreign_currency.js"></script>
+    <script src="../js/initial_values.js"></script>
+    <script src="../js/contador_2.js"></script>
+    <script src="../js/contador_3.js"></script> 
     </body>
 </html>

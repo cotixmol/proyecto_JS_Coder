@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/style_assets.css">
         <link rel="icon" href="../images/favicon/favicon-32x32.png">
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>    
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
     </head>
     <body>
         <nav>
@@ -70,25 +70,30 @@
                 }
                     </script>
         </div>
+        <!-- Esta en la barra donde se completa con los inputs iniciales del usuario -->
         <div id="initial_variables_box">
             <object id="welcome_user"></object>
             <object id="dolar_value_tag"></object>
             <object id="interest_rate_tag"></object>
         </div>
+        
+        <!-- Estos forms iran desapareciendo y apareciendo a medida que hagamos click en el boton -->
+        <!-- Bloque de Pesos Depositados -->
         <main id="main_box">
             <form id="form_pesos_depositados" action="">
                 <div class="form_box">
                     <p>¿Cual es la cantidad de pesos que posee?</p>
                 </div>
                 <div class="form_box">
-                    <label for="">Cantidad de Pesos &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                    <label for="">Cantidad de Pesos </label>
                     <input id="pesos_input_amount" type="text" placeholder="Cantidad de $ARS">
                 </div>
                 <div class="form_box">
                     <button id="pesos_1_next_step_btn">Click para continuar</button>
                 </div>
             </form>
-    
+
+        <!-- Bloque de Pesos en Plazo Fijo -->    
             <form id="form_plazo_fijo" style="display:none" action="">
                 <div class="form_box">
                     <p>¿Cual es la cantidad de pesos que tiene en Plazo Fijo?</p>
@@ -101,49 +106,47 @@
                     <button id="pesos_2_next_step_btn">Click para continuar</button>
                 </div>
             </form>
+        
+        <!-- Bloque de Acciones o Bonos -->
+        <!-- Contador de Bloques y Bonos -->
+            <form id="form_bonos_acciones_cantidad" style="display:none" action="">           
+                <div class="form_box">    
+                    <p>¿Cuantos Bonos o Acciones tiene?</p>
+                    <br>
+                    <p id="contador_1">0</p>
+                </div>
+                <div class="form_box">
+                    <button type="button" class="btn reiniciar" id="contador_btn">Reiniciar</button>
+                    <button type="button" class="btn sumar" id="contador_btn">+1</button>
+                </div>
+                <div class="form_box">
+                    <button id="pesos_3_next_step_btn">Click para continuar</button>
+                </div>
+            </form>  
 
-        <form id="form_bonos_acciones_cantidad" style="display:none" action="">           
-            <div class="form_box">    
-                <p>¿Cuantos Bonos o Acciones tiene?</p>
-                <br>
-                <p id="contador">0</p>
-            </div>
-            <div class="form_box">
-                <button type="button" class="btn reiniciar" id="contador_btn">Reiniciar</button>
-                <button type="button" class="btn sumar" id="contador_btn">+1</button>
-            </div>
-            <div class="form_box">
-                <button id="pesos_3_next_step_btn">Click para continuar</button>
-            </div>
-        </form>  
-
-
-        <form id="form_bonos_acciones" style="display:none" action=""> 
-
-            <div id="forms_bonos_acciones_pesos">
-            </div>
-
-
-            <div class="form_box">
-                <button id="pesos_4_next_step_btn">Click para continuar</button>
-            </div>
-
-        </form>
-
+        <!-- Bloque de Bonos-->
+            <form id="form_bonos_acciones" style="display:none" action=""> 
+                <div id="forms_bonos_acciones_pesos">
+                </div>
+                <div class="form_box">
+                    <button id="pesos_4_next_step_btn">Click para continuar</button>
+                </div>
+            </form>
 
         </main>
 
-        <div id="patrimonio_box">
-            <p id="pesos_patrimonio">Patrimonio en pesos:</p>
-            <p id="dolares_patrimonio">Patrimonio en dolares:</p>
-            <p id="btc_patrimonio">Patrimonio en BTC:</p>
-        </div>
+        <!-- Resultados del Analisis -->
+            <div id="patrimonio_box">
+                <p id="pesos_patrimonio">Patrimonio en pesos: <span>(Cantidad de Pesos)</span></p>
+                <p id="dolares_patrimonio">Patrimonio en dolares: <span>(Cantidad de Dolares)</span></p>
+                <p id="btc_patrimonio">Patrimonio en BTC: <span>(Cantidad de Bitcoin)</span></p>
+            </div>
 
         <footer>
             <p>Copyright &copy <a href="https://www.linkedin.com/in/constancio-molinengo/">Constancio Molinengo</a>.</p>
         </footer>
-        <script src="../js/local_currency.js"></script>
-        <script src="../js/initial_values.js"></script>
-        <script src="../js/contador.js"></script>
+    <script src="../js/local_currency.js"></script>
+    <script src="../js/initial_values.js"></script>
+    <script src="../js/contador_1.js"></script>          
     </body>
 </html>

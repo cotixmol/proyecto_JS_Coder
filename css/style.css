@@ -68,7 +68,7 @@ input{
     color:#0B0033;
 }
 /*Botones*/
-#next_step_btn,#pesos_1_next_step_btn,#pesos_2_next_step_btn,#pesos_3_next_step_btn,#contador_btn,#pesos_4_next_step_btn{
+#next_step_btn,#pesos_1_next_step_btn,#pesos_2_next_step_btn,#pesos_3_next_step_btn,#contador_btn,#pesos_4_next_step_btn,#dolares_1_next_step_btn,#dolares_2_next_step_btn,#dolares_3_next_step_btn,#dolares_4_next_step_btn,#dolares_5_next_step_btn,#dolares_6_next_step_btn{
 	background: none;
 	border: none;
 	padding: 1em;
@@ -76,7 +76,7 @@ input{
 	cursor: pointer;
     color: rgb(235, 64, 52);
 }
-#contador_btn,#contador{
+#contador_btn,.contador{
     font-size: 1.3em;
 }
 #next_step_btn:active{
