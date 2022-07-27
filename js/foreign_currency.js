@@ -78,7 +78,7 @@ document.getElementById("dolares_2_next_step_btn").addEventListener("click",save
 //Armo una variable de tipo string con la variables parametro, que va ir cambiado dependiendo del argumento de la funcion.
 let string_input_moneda_fiat="";
 function string_input_2(parametro){
-    string_input_moneda_fiat="<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre la divisa no. "+parametro+"</p></div><div class='form_box'><label>Nombre de la Divisa</label><input id='moneda_fiat_input_name_"+parametro+"' type='text' placeholder='Nombre Divisa'></div><div class='form_box'><label>Cantidad de unidades de la Divisa</label><input id='moneda_fiat_input_amount_"+parametro+"' type='number' placeholder='Cantidad de Divisas'></div><div class='form_box'><label>Valor de la Divisa en Dolares</label><input id='moneda_fiat_input_value_"+parametro+"' type='number' placeholder='Valor $USD/divisa'></div>";
+    string_input_moneda_fiat="<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre de la divisa no. "+parametro+"</p></div><div class='form_box'><label>Nombre de la Divisa</label><input id='moneda_fiat_input_name_"+parametro+"' type='text' placeholder='Nombre Divisa'></div><div class='form_box'><label>Cantidad de unidades de la Divisa</label><input id='moneda_fiat_input_amount_"+parametro+"' type='number' placeholder='Cantidad de Divisas'></div><div class='form_box'><label>Valor de la Divisa en Dolares</label><input id='moneda_fiat_input_value_"+parametro+"' type='number' placeholder='Valor $USD/divisa'></div>";
 }
 
 

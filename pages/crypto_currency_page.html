@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/style_assets.css">
         <link rel="icon" href="../images/favicon/favicon-32x32.png">
-    
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
     </head>
     <body>
         <nav>
@@ -76,12 +76,37 @@
             <object id="interest_rate_tag"></object>
         </div>
 
+        <!-- Bloque Cryptomonedas -->
+        <!-- Contador de Cryptomonedas -->
+        <form id="form_crypto_cantidad" action="">           
+            <div class="form_box">    
+                <p>¿Cuantas Criptomonedas diferentes tiene?</p>
+                <br>
+                <p id="contador_4">0</p>
+            </div>
+            <div class="form_box">
+                <button type="button" class="btn reiniciar" id="contador_btn">Reiniciar</button>
+                <button type="button" class="btn sumar" id="contador_btn">+1</button>
+            </div>
+            <div class="form_box">
+                <button id="crypto_1_next_step_btn">Click para continuar</button>
+            </div>
+        </form>  
+
+    <!-- Bloque de Cryptomonedas-->
+        <form id="form_crypto" style="display:none" action=""> 
+            <div id="forms_crypto">
+            </div>
+            <div class="form_box">
+                <button id="crypto_2_next_step_btn">Click para continuar</button>
+            </div>
+        </form>
         
         <!-- Resultados del Analisis -->
         <div id="patrimonio_box">
-            <p id="pesos_patrimonio">Patrimonio en pesos: <div>(Cantidad de Pesos)</div></p>
-            <p id="dolares_patrimonio">Patrimonio en dolares: <div>(Cantidad de Dolares)</div></p>
-            <p id="btc_patrimonio">Patrimonio en BTC: <div>(Cantidad de Bitcoin)</div></p>
+            <p id="pesos_patrimonio">Patrimonio en pesos: <span>(Cantidad de Pesos)</span></p>
+            <p id="dolares_patrimonio">Patrimonio en dolares: <span>(Cantidad de Dolares)</span></p>
+            <p id="btc_patrimonio">Patrimonio en BTC: <span>(Cantidad de Bitcoin)</span></p>
         </div>
         
         <footer>
@@ -89,6 +114,6 @@
         </footer>
         <script src="../js/crypto_currency.js"></script>
         <script src="../js/initial_values.js"></script>
-        <script src="../js/contador.js"></script>
+        <script src="../js/contador_4.js"></script>
     </body>
 </html>

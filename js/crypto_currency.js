@@ -1,47 +1,74 @@
-//AUN NO ESTA TERMINADO. UNA VEZ TERMINADO "LOCAL_CURRENCY" ES SIMPLE DE COPIAR
-
-/*
 //Contructor para generar los objetos con el Nombre del Activo, Cantidad del Activo y Valor del Activo
 function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_name=asset_input_name;
     this.asset_input_amount=asset_input_amount;
     this.asset_input_value=asset_input_value;
 }
+//Objetos y Arrays a usar en CryptoActivos
+let case_3_1=[];            //Array que tiene las cryptomonedas.
+let case_3={};              //Objeto que almacena temporalmente el valor de las cryptomonedas en $USD para luego push al objeto
 
-let case_3_1=[]; //Array que tiene las cryptomonedas.
+//Valores iniciales de las variables relacionadas con CryptoActuvos
+let asset_input_amount=0;   //Cantidad de un item predefinido, cuando no los tiene el usuario.
+let asset_input_name="";    //Nombre del activo.
+let asset_input_value=0;    //Valor de un item predefinido, cuando no los tiene el usuario.
+let asset_quantity=0;       //Cantidad de Activos de un mismo tipo
 
-let case_3={}; //Objeto que almacena temporalmente el valor de las cryptomonedas en $USD para luego push al objeto
+//Alert informando al usuario sobre esta seccion
+Swal.fire({
+    title: 'Cryptomonedas',
+    text: "En esta sección le preguntaremos por su patrimonio en CriptoActivos",
+    icon: 'question',
+    confirmButtonColor: '#0B0033',
+})
 
-let asset_input_amount=0; //Creo la variable que determina la cantidad de un item predefinido, cuando no los tiene el usuario.
-let asset_input_name=""; //Creo la variables que determina el nombre del activo.
-let asset_input_value=0; //Creo la variable que determina el valor de un item predefinido, cuando no los tiene el usuario.
-let asset_quantity=0; //Creo la variable que uso en los FOR
-
-//CRYPTOMONEDAS
-    asset_quantity=parseInt(prompt('Ingrese que cantidad de distintas cryptomonedas que posee: '));
-        //Hago un for con el cual creo los valores para un constructor y luego .push al array
-        for (let stock_number=1;stock_number<=asset_quantity;stock_number++){
-            
-
-                asset_input_name=prompt('Escriba el nombre de la cryptomoneda '+stock_number+'.');
-                asset_input_amount=parseInt(prompt('Ingrese la cantidad que posee de '+asset_input_name+':'));
-                asset_input_value=parseInt(prompt('Ingrese a cuantos $USD equivale 1 (UN) '+asset_input_name+'.'))
-
-            case_3 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*dolar_value);
-            
-            case_3_1.push(case_3);
-        }
-
-
-//(case_3_1): Array que almacena objetos con Nombre, Cantidad y Valor de Cryptomonedas.
-
-cryptomonedas_nombres = []
-cryptomonedas_valor = []
-cryptomonedas_cantidad = []
-
-for (let el in case_3_1){
-    cryptomonedas_nombres =         push(case_3_1.asset_input_name);
-    cryptomonedas_valor =           push(case_3_1.asset_input_amount);
-    cryptomonedas_cantidad =        push(case_3_1.asset_input_value);
+//Bloque Cryptomonedas
+//Estructura para armar Inputs de Cryptomonedas
+//Armo una variable de tipo string con la variables parametro, que va ir cambiado dependiendo del argumento de la funcion.
+let string_input_crypto="";
+function string_input_4(parametro){
+    string_input_crypto="<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre de la criptomoneda no. "+parametro+"</p></div><div class='form_box'><label>Nombre de la criptomoneda</label><input id='crypto_input_name_"+parametro+"' type='text' placeholder='Nombre Criptomoneda'></div><div class='form_box'><label>Cantidad de unidades de la criptomoneda</label><input id='crypto_input_amount_"+parametro+"' type='number' placeholder='Cantidad la criptomoneda'></div><div class='form_box'><label>Valor del Criptoactivo en Dolares</label><input id='crypto_input_value_"+parametro+"' type='number' placeholder='Valor $USD/crypto'></div>";
 }
-*/
+
+
+//Selecciono el div donde iran los formularios para rellenar
+let forms_crypto_box=document.getElementById("forms_crypto");
+
+//Funcionalidad del bloque de Contador para monedas fiat
+const save_asset_data_crypto= (e) =>{
+    e.preventDefault();   
+    asset_quantity=JSON.parse(localStorage.getItem("Contador 4"))                                          
+    document.querySelector("form").reset();  
+
+    for(let i=1;i<=asset_quantity;i++){                                                                 
+        string_input_4(i);                                                                                
+        forms_crypto_box.innerHTML += string_input_crypto; 
+        //Quedan formados los id moneda_fiat_input_name_${i}, moneda_fiat_input_amount_${i}, moneda_fiat_input_value${i}                                
+    }
+
+    const form_crypto_cantidad  = document.querySelector("#form_crypto_cantidad");      
+    const form_crypto = document.querySelector("#form_crypto");     
+    form_crypto_cantidad.style.display="none";                                                  
+    form_crypto.style.display="block";
+}
+document.getElementById("crypto_1_next_step_btn").addEventListener("click",save_asset_data_crypto);
+
+
+//Funcionalidad del bloque de Crypto
+const save_asset_data_crypto_2 = (e) =>{
+    for (let i=1;i<=asset_quantity;i++){                                                                
+        e.preventDefault(); 
+        asset_input_name = document.getElementById(`crypto_input_name_${i}`).value;                                                                               
+        asset_input_amount = document.getElementById(`crypto_input_amount_${i}`).value;                                                                 
+        asset_input_value = document.getElementById(`crypto_input_value_${i}`).value;;                        
+        document.querySelector("form").reset();                                                             
+                
+        case_3 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);              
+        case_3_1.push(case_3);                                                                          
+    }  
+            
+    localStorage.setItem("Cryptomonedas", JSON.stringify(case_3_1)); 
+    window.location.href="../pages/assets.html" 
+}
+
+document.getElementById("crypto_2_next_step_btn").addEventListener("click",save_asset_data_crypto_2);
