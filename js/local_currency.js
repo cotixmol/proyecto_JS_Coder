@@ -87,7 +87,7 @@ let forms_bonos_box=document.getElementById("forms_bonos_acciones_pesos");
 //Funcionalidad del bloque de Contador
 const save_asset_data_pesos_3 = (e) =>{
     e.preventDefault();   
-    asset_quantity=JSON.parse(localStorage.getItem("Contador 1"))                                         //Tomo el valor del contador, que esta en un JSON enviado por el archivo "contador.js"  
+    asset_quantity=JSON.parse(localStorage.getItem("contador_1"))                                         //Tomo el valor del contador, que esta en un JSON enviado por el archivo "contador.js"  
     document.querySelector("form").reset();  
 
     for(let i=1;i<=asset_quantity;i++){                                                                 //Hago un bloque de inputs dada el numero de acciones que el usuario posee

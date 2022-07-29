@@ -89,7 +89,7 @@ let forms_moneda_fiat_box=document.getElementById("forms_monedas_fiat_dolares");
 //Funcionalidad del bloque de Contador para monedas fiat
 const save_asset_data_dolares_3 = (e) =>{
     e.preventDefault();   
-    asset_quantity=JSON.parse(localStorage.getItem("Contador 2"))                                          
+    asset_quantity=JSON.parse(localStorage.getItem("contador_2"))                                          
     document.querySelector("form").reset();  
 
     for(let i=1;i<=asset_quantity;i++){                                                                 
@@ -146,7 +146,7 @@ let forms_bonos_acciones_dolares_box=document.getElementById("forms_bonos_accion
 //Funcionalidad del bloque de Contador de Bonos acciones en dolares
 const save_asset_data_dolares_5 = (e) =>{
     e.preventDefault();   
-    asset_quantity=JSON.parse(localStorage.getItem("Contador 3"))                                          
+    asset_quantity=JSON.parse(localStorage.getItem("contador_3"))                                          
     document.querySelector("form").reset();  
 
     for(let i=1;i<=asset_quantity;i++){                                                                 

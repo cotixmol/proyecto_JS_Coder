@@ -37,7 +37,7 @@ let forms_crypto_box=document.getElementById("forms_crypto");
 //Funcionalidad del bloque de Contador para monedas fiat
 const save_asset_data_crypto= (e) =>{
     e.preventDefault();   
-    asset_quantity=JSON.parse(localStorage.getItem("Contador 4"))                                          
+    asset_quantity=JSON.parse(localStorage.getItem("contador_4"))                                          
     document.querySelector("form").reset();  
 
     for(let i=1;i<=asset_quantity;i++){                                                                 
