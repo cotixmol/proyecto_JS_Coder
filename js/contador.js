@@ -47,4 +47,3 @@ counter(contador_1,"contador_1")
 counter(contador_2,"contador_2")
 counter(contador_3,"contador_3")
 counter(contador_4,"contador_4")
-
