@@ -25,12 +25,12 @@
 let contador_1 = 0;
 let contador_2 = 0;
 let contador_3 = 0;
-let contador_4 = 0;               
+let contador_4 = 0;             
 
 const counter = (contador,contador_nombre) => {
     document.querySelectorAll(".btn").forEach((boton) => { 
         boton.addEventListener("click",(e) => {
-            let lista_de_clases = e.currentTarget.classList;                
+            lista_de_clases = e.currentTarget.classList;                
             if(lista_de_clases.contains("sumar")){
                 contador++;                          
             }
@@ -38,10 +38,16 @@ const counter = (contador,contador_nombre) => {
                 contador=0;
             }
             document.getElementById(contador_nombre).textContent = contador; 
-            localStorage.setItem(contador_nombre, JSON.stringify(contador));   
+            localStorage.setItem(contador_nombre, JSON.stringify(contador));
+            return lista_de_clases;  
         })
     })
 }
+
+//  Las funciones counters que tienen null en la pagina dan un error, pero no afecta el desempeño da la pagina.
+//  Por ejemplo, contador_2, contador_3 y contador_4, en el primer contador dan un error de null. Pero no afecta a contador_1
+//  Asi con todas los contadores.
+//  Intente meter condicionales, pero no encontre la forma :( 
 
 counter(contador_1,"contador_1")
 counter(contador_2,"contador_2")
