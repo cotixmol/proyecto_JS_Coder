@@ -1,4 +1,8 @@
-//Sweet Alert de Exito
+/*  En esta sección explico la funcionalidad de la pagina "assets.html"
+    En primer lugar genero un SweetAlert para indicar que los procesos de donde provengo antes de llegar aqui fueron un exito.
+    Creo una función que da un dinamismo a cada una de las 3 preguntas de assets.html. Esta toma el id del bloque html y el id del botón "No" de cada pregunta. Si el usuario hace click sobre "NO" , el bloque desaparece.
+*/
+
 Swal.fire({
     position: 'center',
     icon: 'success',
@@ -6,11 +10,6 @@ Swal.fire({
     showConfirmButton: false,
     timer: 2000
   })
-
-/*  Creamos un función para hacer lo siguiente:
-    Cada una de las 3 preguntas de assets.html va a ser asociada a una variable.
-    Si el usuario hace click sobre "NO" , el bloque desaparece.
-    La idea es generar contenido dinamico */
 
 const delete_block = (block,button) => {
     let currency_block = document.getElementById(block);

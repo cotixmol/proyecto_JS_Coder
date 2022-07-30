@@ -1,3 +1,4 @@
+//README
 /*  Este script es la configuración de los contadores que existen dentro de cada opcion de activos.
 
     En la sección de pesos: 
@@ -10,7 +11,6 @@
     En la sección de criptomonedas: 
     Contador 4) Cuenta la cantidad de distintas criptomonedas que tiene el usuario, para luego completarlos.
 */
-
 /*  Los scripts funcionan de la siguiente manera:
     Creo la variables "contador_1", la cual almacenara el valor del contador.
     A los elementos identificado con la class="btn" (en este caso son 2, sumar y reiniciar) los hago pasar
@@ -19,13 +19,18 @@
     Luego, a traves de un condicional reviso con el metodo de listas contains() si existe la clase "sumar" o "reiniciar"
     De acuerdo a la presencia de una u otra el contador suma 1 unidad o vuelve a 0.
     Luego se envia el valor al DOM, para modificar el numero dinamicamente.
-    Guardo el valor en la "Local Storage" para saber el numero de inputs a generar en el paso siguiente.   
+    Guardo el valor en la "Local Storage" para saber el numero de inputs a generar en el paso siguiente.
+*/               
+/*  Las funciones counters que tienen null en la pagina dan un error, pero no afecta el desempeño da la aplicación.
+//  Por ejemplo, contador_2, contador_3 y contador_4, en el primer contador dan un error de null. Pero no afecta a contador_1
+//  Asi con todas los contadores.
+//  Intente meter condicionales, pero no encontre la forma y decidi dejarlo de esta forma :( 
 */
 
 let contador_1 = 0;
 let contador_2 = 0;
 let contador_3 = 0;
-let contador_4 = 0;             
+let contador_4 = 0; 
 
 const counter = (contador,contador_nombre) => {
     document.querySelectorAll(".btn").forEach((boton) => { 
@@ -39,15 +44,9 @@ const counter = (contador,contador_nombre) => {
             }
             document.getElementById(contador_nombre).textContent = contador; 
             localStorage.setItem(contador_nombre, JSON.stringify(contador));
-            return lista_de_clases;  
         })
     })
 }
-
-//  Las funciones counters que tienen null en la pagina dan un error, pero no afecta el desempeño da la pagina.
-//  Por ejemplo, contador_2, contador_3 y contador_4, en el primer contador dan un error de null. Pero no afecta a contador_1
-//  Asi con todas los contadores.
-//  Intente meter condicionales, pero no encontre la forma :( 
 
 counter(contador_1,"contador_1")
 counter(contador_2,"contador_2")

@@ -1,22 +1,26 @@
-//ESTA PARTE LA USO PARA ALMACENAR NOMBRE, DOLAR Y TASA DE INTERES.
+/*  En esta sección explico la funcionalidad del Index:
+    Apenas reinicio o inicio la aplicación me aseguro de que todo el localStorage este limpio, esta funcionalidad tambien sirve por si queremos volver a reigresar los datos, desde la opción "¿Estos datos estan mal?" en "assets.htlm".
+    Creo un objeto que asigno a la variable "initial_variables", aqui dentro inserto los valores ingresados por el usuario en la pagina principal. Guardandolo en el LocalStorage para un uso posterior.
+    Ademas, debajo, genere un condicional que emite un Sweet Alert en caso que el usuario no ingrese todos los campos. En caso positivo direcciono al usuario al html "assets.html"
+    Luego genero el evento al clickear en continuar.
+*/
 
-//Limpio la memoria
 localStorage.clear()
-
-//Genero un objeto para almacenar variables iniciales
 let inicial_variables={};
 
-//Genero la funcion que guarda lo ingresado por el usuario en el formulario en pares clave-valor.
 const saveInitialData = (e) =>{
-    e.preventDefault();                                                                 //No manda el formulario.
+    e.preventDefault();                                                          
+    
     inicial_variables = {
         user_name: document.getElementById("user_name").value,
         dolar_value: document.getElementById("dolar_value").value,
         interest_rate: document.getElementById("interest_rate").value,
     }
-    document.querySelector("form").reset();                                             //Resetea el formulario.
-    localStorage.setItem("Variables Iniciales", JSON.stringify(inicial_variables));     //Guarda el objeto como string en LocalStorage.
-    //Si el usuario no relleno alguno de los campos, salta un alert.
+
+    document.querySelector("form").reset();
+
+    localStorage.setItem("Variables Iniciales", JSON.stringify(inicial_variables));     
+
     if ((document.getElementById("user_name").value!="") && (document.getElementById("dolar_value").value!=0) && (document.getElementById("interest_rate").value!=0)){
         window.location.href="../pages/assets.html"  
     }else{
@@ -27,7 +31,5 @@ const saveInitialData = (e) =>{
             confirmButtonColor: '#0B0033',
         })
     }
-                                       //Redirige a la siguiente pagina.
 }
-
-document.getElementById("next_step_btn").addEventListener("click",saveInitialData);     //Evento que al clickear ejecuta la funcion creada.
+document.getElementById("next_step_btn").addEventListener("click",saveInitialData);

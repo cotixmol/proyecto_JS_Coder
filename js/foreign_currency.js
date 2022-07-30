@@ -1,101 +1,111 @@
-//Contructor para generar los objetos con el Nombre del Activo, Cantidad del Activo y Valor del Activo
+//README
+/*  En esta sección genero la funcionalidad del bloque "Moneda Extranjera": 
+    RECOMENDAMOS PREVIAMENTE iniciar la lectura de la documentación de este codigo desde el archivo "local_currency.js", donde se explica con claridad todo lo utilizado. Las funciones y metodos utilizados aqui son completamente equivalentes a aquellos.
+    
+    Creamos los Objetos y Arrays a usar:
+    "case_2_1_asset"      Objeto que tiene los $USD en efectivo.
+    "case_2_2_asset"      Objeto que tiene los $USD en plazo fijo.
+    "case_2"              Almacena temporalmente el valor de las acciones/bonos y otras monedas para luego push al objeto "case_2_1 o 2"
+    "case_2_1"            Array que tiene las acciones o bonos en $USD
+    "case_2_2"            Array que tiene las otras monedas FIAT.
+*/
+
 function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_name=asset_input_name;
     this.asset_input_amount=asset_input_amount;
     this.asset_input_value=asset_input_value;
 }
-//Objetos y Arrays a usar en CryptoActivos
-let case_2_1_asset={};      //Objeto que tiene los $USD en efectivo
-let case_2_2_asset={};      //Objeto que tiene los $USD en plazo fijo
-let case_2_1=[];            //Array que tiene las acciones o bonos en $USD
-let case_2_2=[];            //Array que tiene las otras monedas FIAT que el usuario ingrese.
-let case_2={};              //Objeto que almacena temporalmente el valor de las acciones o bonos en $USD, y monedas extranjeras para luego push al objeto
 
-//Valores iniciales de las variables relacionadas con CryptoActuvos
-let asset_input_amount=0;   //Cantidad de un item predefinido, cuando no los tiene el usuario.
-let asset_input_name="";    //Nombre del activo.
-let asset_input_value=0;    //Valor de un item predefinido, cuando no los tiene el usuario.
-let asset_quantity=0;       //Cantidad de Activos de un mismo tipo
+let case_2_1_asset={};     
+let case_2_2_asset={};      
+let case_2_1=[];            
+let case_2_2=[];            
+let case_2={};              
+let asset_input_amount=0;   
+let asset_input_name="";    
+let asset_input_value=0;    
+let asset_quantity=0;       
 
-//Alert informando al usuario sobre esta seccion
 Swal.fire({
     title: 'Moneda Extranjera $USD y Otras',
     text: "En esta sección le preguntaremos por su patrimonio en Dolares y otras Monedas",
     icon: 'question',
     confirmButtonColor: '#0B0033',
 })
+//  README
+/*  Secciónes dolares en efectivo y plazo fijo:
+    RECOMENDAMOS PREVIAMENTE iniciar la lectura de la documentación de este codigo desde el archivo "local_currency.js", donde se explica con claridad todo lo utilizado. Las funciones y metodos utilizados aqui son completamente equivalentes a aquellos.
 
-//Funcionalidad del Bloque de Dolares Depositados
-//Genero la funcion que guarda lo ingresado por el usuario en el formulario.
+    En la función "save_asset_data_dolares_1", ademas, se trae desde Local Storage el valor del dolar ingresado en el inicio de la app por el usuario. El cual es utilizado como objeto y traemos su propiedad dolar_value, asignandola a "asset_input_value".
+    Esto sirve para, a traves de una multiplicación en el constructor, almacernar el valor en pesos.
+
+    La función "save_asset_data_dolares_2", es igual. Almacena los depositos en plazo fijo en dolares.
+*/
 const save_asset_data_dolares_1 = (e) =>{
-    e.preventDefault();                                                                                 //Previene que el formulario se reinicie.
-    asset_input_amount = document.getElementById("dolares_input_amount").value;                           //Guardo el valor ingresado en el input.
-    document.querySelector("form").reset();                                                             //Resetea el formulario.
-    localStorage.setItem("Dolares Depositados", JSON.stringify(asset_input_amount));                      //Guarda la variable como string en LocalStorage. Luego lo vuelvo a usar.
+    e.preventDefault();   
+                                                                                 
+    asset_input_amount = document.getElementById("dolares_input_amount").value;                           
+    localStorage.setItem("dolares_depositados", JSON.stringify(asset_input_amount)); 
     
-    asset_input_amount= JSON.parse(localStorage.getItem("Dolares Depositados"));                          //Tomo el valor del Local Storage y lo aplico a la variable.
-    asset_input_name="$USD";                                                                            //Nombre del activo. Es fijo
-    dolar= JSON.parse(localStorage.getItem("Variables Iniciales"));;
-    asset_input_value=dolar.dolar_value;                                                                                //Valor del activo. Es fijo
-
-    case_2_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);          //Creo un objeto para almacenar esta informacion.
+    document.querySelector("form").reset();   
     
-    const form_dolares_depositados = document.querySelector("#form_dolares_depositados");                   //Selecciono el bloque actual y el bloque siguiente.
+    asset_input_name="$USD";   
+    asset_input_amount= parseInt(JSON.parse(localStorage.getItem("dolares_depositados")));                          
+    dolar= JSON.parse(localStorage.getItem("Variables Iniciales"));
+    asset_input_value=dolar.dolar_value;  
+    
+    case_2_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);   
+    
+    localStorage.setItem("Dolares Depositados", JSON.stringify(case_2_1_asset));
+    
+    const form_dolares_depositados = document.querySelector("#form_dolares_depositados");                  
     const form_plazo_fijo_dolares  = document.querySelector("#form_plazo_fijo_dolares");
-
-    form_dolares_depositados.style.display="none";                                                        //Escondo el bloque actual y muestro el siguiente.
+    form_dolares_depositados.style.display="none";                                                       
     form_plazo_fijo_dolares.style.display="block";
 }
-document.getElementById("dolares_1_next_step_btn").addEventListener("click",save_asset_data_dolares_1);     //Cuando Clickeo "Siguiente ejecuta la funcion superior"
+document.getElementById("dolares_1_next_step_btn").addEventListener("click",save_asset_data_dolares_1);    
 
-
-//Funcionalidad del Bloque de Plazo Fijo en dolares
-//Es igual a la Funcionalidad de los dolares depositados
 const save_asset_data_dolares_2 = (e) =>{
     e.preventDefault();                                                                                
-    asset_input_amount = document.getElementById("plazo_fijo_dolares_input_amount").value;                      
-    document.querySelector("form").reset();                                                             
-    localStorage.setItem("Plazo Fijo Dolares", JSON.stringify(asset_input_amount));                             
     
-    asset_input_amount= JSON.parse(localStorage.getItem("Plazo Fijo Dolares"));                                 
-    asset_input_name="P.F. $USD";                                                                       
+    asset_input_amount = document.getElementById("plazo_fijo_dolares_input_amount").value;                      
+    localStorage.setItem("plazo_fijo_dolares", JSON.stringify(asset_input_amount)); 
+    
+    document.querySelector("form").reset();   
+    
+    asset_input_name="P.F. $USD"; 
+    asset_input_amount= JSON.parse(localStorage.getItem("plazo_fijo_dolares"));                                 
     dolar = JSON.parse(localStorage.getItem("Variables Iniciales"))
     asset_input_value = dolar.dolar_value                                                                                 
 
-    case_2_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);          
+    case_2_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);  
+    
+    localStorage.setItem("Plazo Fijo Dolares", JSON.stringify(case_2_2_asset));
     
     const form_plazo_fijo_dolares = document.querySelector("#form_plazo_fijo_dolares");
     const form_monedas_fiat_cantidad  = document.querySelector("#form_monedas_fiat_cantidad");
-
     form_plazo_fijo_dolares.style.display="none";
     form_monedas_fiat_cantidad.style.display="block";
 }
 document.getElementById("dolares_2_next_step_btn").addEventListener("click",save_asset_data_dolares_2);    
 
-
-//Bloque de otras Monedas
-//Estructura para armar Inputs de Bonos y Acciones
-//Armo una variable de tipo string con la variables parametro, que va ir cambiado dependiendo del argumento de la funcion.
+//Otras monedas FIAT (Monedas emitadas por gobiernos)
 let string_input_moneda_fiat="";
 function string_input_2(parametro){
-    string_input_moneda_fiat="<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre de la divisa no. "+parametro+"</p></div><div class='form_box'><label>Nombre de la Divisa</label><input id='moneda_fiat_input_name_"+parametro+"' type='text' placeholder='Nombre Divisa'></div><div class='form_box'><label>Cantidad de unidades de la Divisa</label><input id='moneda_fiat_input_amount_"+parametro+"' type='number' placeholder='Cantidad de Divisas'></div><div class='form_box'><label>Valor de la Divisa en Dolares</label><input id='moneda_fiat_input_value_"+parametro+"' type='number' placeholder='Valor $USD/divisa'></div>";
+    string_input_moneda_fiat=`<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre de la divisa no. ${parametro}</p></div><div class='form_box'><label>Nombre de la Divisa</label><input id='moneda_fiat_input_name_${parametro}' type='text' placeholder='Nombre Divisa'></div><div class='form_box'><label>Cantidad de unidades de la Divisa</label><input id='moneda_fiat_input_amount_${parametro}' type='number' placeholder='Cantidad de Divisas'></div><div class='form_box'><label>Valor de la Divisa en Dolares</label><input id='moneda_fiat_input_value_${parametro}' type='number' placeholder='Valor $USD/divisa'></div>`
 }
-
-
-
-//Selecciono el div donde iran los formularios para rellenar
 let forms_moneda_fiat_box=document.getElementById("forms_monedas_fiat_dolares");
 
-//Funcionalidad del bloque de Contador para monedas fiat
+//Contador
 const save_asset_data_dolares_3 = (e) =>{
-    e.preventDefault();   
+    e.preventDefault();
+
     asset_quantity=JSON.parse(localStorage.getItem("contador_2"))                                          
     document.querySelector("form").reset();  
 
     for(let i=1;i<=asset_quantity;i++){                                                                 
         string_input_2(i);                                                                                
-        forms_moneda_fiat_box.innerHTML += string_input_moneda_fiat; 
-        //Quedan formados los id moneda_fiat_input_name_${i}, moneda_fiat_input_amount_${i}, moneda_fiat_input_value${i}                                
+        forms_moneda_fiat_box.innerHTML += string_input_moneda_fiat;                               
     }
 
     const form_monedas_fiat_cantidad  = document.querySelector("#form_monedas_fiat_cantidad");      
@@ -105,11 +115,11 @@ const save_asset_data_dolares_3 = (e) =>{
 }
 document.getElementById("dolares_3_next_step_btn").addEventListener("click",save_asset_data_dolares_3);
 
-
-//Funcionalidad del bloque de Monedas Fiat
+//Monedas Fiat
 const save_asset_data_dolares_4 = (e) =>{
     for (let i=1;i<=asset_quantity;i++){                                                                
         e.preventDefault(); 
+        
         asset_input_name = document.getElementById(`moneda_fiat_input_name_${i}`).value;                                                                               
         asset_input_amount = document.getElementById(`moneda_fiat_input_amount_${i}`).value;                                                                 
         asset_input_value = document.getElementById(`moneda_fiat_input_value_${i}`).value;;                        
@@ -126,33 +136,27 @@ const save_asset_data_dolares_4 = (e) =>{
     const form_bonos_acciones_dolares_cantidad = document.querySelector("#form_bonos_acciones_dolares_cantidad");     
     form_monedas_fiat.style.display="none";                                                  
     form_bonos_acciones_dolares_cantidad.style.display="block";
-
 }
-
 document.getElementById("dolares_4_next_step_btn").addEventListener("click",save_asset_data_dolares_4);
 
-
-//Bloque de Bonos y Acciones en dolares
-//Estructura para armar Inputs de Bonos y Acciones en dolares
-//Armo una variable de tipo string con la variables parametro, que va ir cambiado dependiendo del argumento de la funcion.
+//Bonos y Acciones en Dolares
 let string_input_bonos_acciones_dolares="";
 function string_input_3(parametro){
-    string_input_bonos_acciones_dolares="<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre de la Accion o Bono no. "+parametro+"</p></div><div class='form_box'><label>Nombre del Bono/Accion</label><input id='bonos_acciones_dolares_input_name_"+parametro+"' type='text' placeholder='Nombre Activo'></div><div class='form_box'><label>Cantidad de Bonos/Acciones</label><input id='bonos_acciones_dolares_input_amount_"+parametro+"' type='number' placeholder='Cantidad del Bono/Accion'></div><div class='form_box'><label>Valor del Bono/Accion en Dolares</label><input id='bonos_acciones_dolares_input_value_"+parametro+"' type='number' placeholder='Valor del Bono/Accion en Dolares'></div>";
+    string_input_bonos_acciones_dolares=`<div class='form_box'> <p style='color:rgb(235, 64, 52)'>Ingrese el nombre de la Accion o Bono no. ${parametro}</p></div><div class='form_box'><label>Nombre del Bono/Accion</label><input id='bonos_acciones_dolares_input_name_${parametro}' type='text' placeholder='Nombre Activo'></div><div class='form_box'><label>Cantidad de Bonos/Acciones</label><input id='bonos_acciones_dolares_input_amount_${parametro}' type='number' placeholder='Cantidad del Bono/Accion'></div><div class='form_box'><label>Valor del Bono/Accion en Dolares</label><input id='bonos_acciones_dolares_input_value_${parametro}' type='number' placeholder='Valor del Bono/Accion en Dolares'></div>`
 }
-
-//Selecciono el div donde iran los formularios para rellenar
 let forms_bonos_acciones_dolares_box=document.getElementById("forms_bonos_acciones_dolares_dolares");
 
-//Funcionalidad del bloque de Contador de Bonos acciones en dolares
+//Contador
 const save_asset_data_dolares_5 = (e) =>{
-    e.preventDefault();   
-    asset_quantity=JSON.parse(localStorage.getItem("contador_3"))                                          
+    e.preventDefault();
+
+    asset_quantity=JSON.parse(localStorage.getItem("contador_3"))
+
     document.querySelector("form").reset();  
 
     for(let i=1;i<=asset_quantity;i++){                                                                 
         string_input_3(i);                                                                                
-        forms_bonos_acciones_dolares_box.innerHTML += string_input_bonos_acciones_dolares; 
-        //Quedan formados los id bonos_acciones_dolares_input_name_${i}, bonos_acciones_dolares_input_amount_${i}, bonos_acciones_dolares_input_value${i}                                
+        forms_bonos_acciones_dolares_box.innerHTML += string_input_bonos_acciones_dolares;                                
     }
 
     const form_bonos_acciones_dolares_cantidad  = document.querySelector("#form_bonos_acciones_dolares_cantidad");      
@@ -162,14 +166,15 @@ const save_asset_data_dolares_5 = (e) =>{
 }
 document.getElementById("dolares_5_next_step_btn").addEventListener("click",save_asset_data_dolares_5);
 
-
-//Funcionalidad del bloque de bonos acciones en dolares
+// Bonos y Acciones en Dolares
 const save_asset_data_dolares_6 = (e) =>{
     for (let i=1;i<=asset_quantity;i++){                                                                
-        e.preventDefault(); 
+        e.preventDefault();
+
         asset_input_name = document.getElementById(`bonos_acciones_dolares_input_name_${i}`).value;                                                                               
         asset_input_amount = document.getElementById(`bonos_acciones_dolares_input_amount_${i}`).value;                                                                 
-        asset_input_value = document.getElementById(`bonos_acciones_dolares_input_value_${i}`).value;;                        
+        asset_input_value = document.getElementById(`bonos_acciones_dolares_input_value_${i}`).value;
+
         document.querySelector("form").reset();                                                             
                 
         case_2 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);              
@@ -179,5 +184,4 @@ const save_asset_data_dolares_6 = (e) =>{
     localStorage.setItem("Bonos Acciones Dolares", JSON.stringify(case_2_1)); 
     window.location.href="../pages/assets.html" 
 }
-
 document.getElementById("dolares_6_next_step_btn").addEventListener("click",save_asset_data_dolares_6);
