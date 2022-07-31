@@ -41,8 +41,14 @@ const evaluar_crypto = async (key) => {
         pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
         dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
         btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
-    });
+    })
+    .then(()=>{
+        localStorage.setItem("Pesos Valores Finales Cryptomoneda", JSON.stringify(pesos_block.innerHTML)); 
+        localStorage.setItem("Dolares Valores Finales Cryptomoneda", JSON.stringify(dolar_block.innerHTML)); 
+        localStorage.setItem("BTC Valores Finales Cryptomoneda", JSON.stringify(btc_block.innerHTML)); 
+    })
 }
+
 
 Swal.fire({
     title: 'Cryptomonedas',
@@ -94,7 +100,7 @@ const save_asset_data_crypto_2 = (e) =>{
     }  
             
     localStorage.setItem("Cryptomonedas", JSON.stringify(case_3_1));
-    evaluar_crypto("Cryptomonedas")
+    evaluar_crypto("Cryptomonedas");
     window.location.href="../pages/assets.html" 
 }
 document.getElementById("crypto_2_next_step_btn").addEventListener("click",save_asset_data_crypto_2);

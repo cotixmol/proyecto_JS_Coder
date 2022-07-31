@@ -68,8 +68,13 @@ const evaluar_dolares_2 = async (key) => {
         pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
         dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
         btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
-    });
-}
+    })
+    .then(()=>{
+            localStorage.setItem("Pesos Valores Finales Dolares", JSON.stringify(pesos_block.innerHTML)); 
+            localStorage.setItem("Dolares Valores Finales Dolares", JSON.stringify(dolar_block.innerHTML)); 
+            localStorage.setItem("BTC Valores Finales Dolares", JSON.stringify(btc_block.innerHTML)); 
+        })
+    }
    
 
 Swal.fire({
@@ -234,6 +239,11 @@ const save_asset_data_dolares_6 = (e) =>{
             
     localStorage.setItem("Bonos Acciones Dolares", JSON.stringify(case_2_1)); 
     evaluar_dolares_2("Bonos Acciones Dolares")
+
+    localStorage.setItem("Pesos Valores Finales Moneda Extranjera", JSON.stringify(pesos_block.innerHTML)); 
+    localStorage.setItem("Dolares Valores Finales Moneda Extranjera", JSON.stringify(dolar_block.innerHTML)); 
+    localStorage.setItem("BTC Valores Finales Moneda Extranjera", JSON.stringify(btc_block.innerHTML)); 
+
     window.location.href="../pages/assets.html" 
 }
 document.getElementById("dolares_6_next_step_btn").addEventListener("click",save_asset_data_dolares_6);

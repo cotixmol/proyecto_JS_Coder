@@ -19,3 +19,23 @@ const delete_block = (block,button) => {
 delete_block("local_currency","no_btn_local")
 delete_block("foreign_currency","no_btn_foreign")
 delete_block("crypto_currency","no_btn_crypto")
+
+    let pesos_pesos = parseInt(JSON.parse(localStorage.getItem("Pesos Valores Finales Pesos")))
+    let dolares_pesos = parseInt(JSON.parse(localStorage.getItem("Dolares Valores Finales Pesos")))
+    let btc_pesos = parseFloat(JSON.parse(localStorage.getItem("BTC Valores Finales Pesos")))
+
+    let pesos_dolares = parseInt(JSON.parse(localStorage.getItem("Pesos Valores Finales Dolares")))
+    let dolares_dolares = parseInt(JSON.parse(localStorage.getItem("Dolares Valores Finales Dolares")))
+    let btc_dolares = parseFloat(JSON.parse(localStorage.getItem("BTC Valores Finales Dolares")))
+
+    let pesos_crypto = parseInt(JSON.parse(localStorage.getItem("Pesos Valores Finales Cryptomoneda")))
+    let dolares_crypto = parseInt(JSON.parse(localStorage.getItem("Dolares Valores Finales Cryptomoneda")))
+    let btc_crypto = parseFloat(JSON.parse(localStorage.getItem("BTC Valores Finales Cryptomoneda")))
+
+    sum_pesos= ((pesos_pesos)||0) + ((pesos_dolares)||0) + ((pesos_crypto)||0);
+    sum_dolares = ((dolares_pesos)||0) + ((dolares_dolares)||0) + ((dolares_crypto)||0);
+    sum_btc= ((btc_pesos)||0) + ((btc_dolares)||0) + ((btc_crypto)||0);
+
+    document.querySelector(".peso_patrimony_final").innerHTML = sum_pesos;
+    document.querySelector(".dolar_patrimony_final").innerHTML = sum_dolares;
+    document.querySelector(".btc_patrimony_final").innerHTML = sum_btc;

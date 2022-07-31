@@ -63,6 +63,11 @@ const evaluar_pesos_2 = async (key) => {
         pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
         dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
         btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
+    })
+    .then(()=>{
+        localStorage.setItem("Pesos Valores Finales Pesos", JSON.stringify(pesos_block.innerHTML)); 
+        localStorage.setItem("Dolares Valores Finales Pesos", JSON.stringify(dolar_block.innerHTML)); 
+        localStorage.setItem("BTC Valores Finales Pesos", JSON.stringify(btc_block.innerHTML)); 
     });
 }
    
