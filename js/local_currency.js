@@ -20,13 +20,6 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_value=asset_input_value;
 }
 
-let evaluar = async (key) => {
-    data = await JSON.parse(localStorage.getItem(key));
-    for (value of data){
-        console.log(value.asset_input_value);
-    }
-}
-
 let case_1_1_asset={};      
 let case_1_2_asset={};    
 let case_1_1=[];            
@@ -34,7 +27,45 @@ let case_1={};
 let asset_input_amount=0;
 let asset_input_name="";   
 let asset_input_value=0;    
-let asset_quantity=0;    
+let asset_quantity=0; 
+
+let dolar= JSON.parse(localStorage.getItem("Variables Iniciales"));
+let total= 0; 
+let pesos_block = document.querySelector(".peso_patrimony");
+let dolar_block = document.querySelector(".dolar_patrimony");
+let btc_block = document.querySelector(".btc_patrimony");
+
+const evaluar_pesos_1 = async (key) => {
+    let data = await JSON.parse(localStorage.getItem(key));
+    total= await data.asset_input_value;
+
+    await fetch("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD")
+    .then((response)=>response.json())
+    .then((json)=>{
+        btc_price = json.Data[0].RAW.USD.PRICE;
+        pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
+        dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
+        btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
+    });
+}
+
+const evaluar_pesos_2 = async (key) => {
+    let data = await JSON.parse(localStorage.getItem(key));
+    for (let i=0;i<data.length;i++){
+        valor=data[i].asset_input_value;
+        total = total + valor
+    }
+
+    await fetch("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD")
+    .then((response)=>response.json())
+    .then((json)=>{
+        btc_price = json.Data[0].RAW.USD.PRICE;
+        pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
+        dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
+        btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
+    });
+}
+   
 
 /* Libreria Sweet Alert generando un mensaje informativo acerca de lo que se va a solicitar
 */
@@ -80,6 +111,7 @@ const save_asset_data_pesos_1 = (e) =>{
     case_1_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);
     
     localStorage.setItem("Pesos Depositados", JSON.stringify(case_1_1_asset));
+    evaluar_pesos_1("Pesos Depositados")
 
     const form_pesos_depositados = document.querySelector("#form_pesos_depositados");           
     const form_plazo_fijo  = document.querySelector("#form_plazo_fijo");
@@ -102,6 +134,7 @@ const save_asset_data_pesos_2 = (e) =>{
     case_1_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);
     
     localStorage.setItem("Plazo Fijo", JSON.stringify(case_1_2_asset));
+    evaluar_pesos_1("Plazo Fijo")
     
     const form_plazo_fijo = document.querySelector("#form_plazo_fijo");
     const form_bonos_acciones_cantidad  = document.querySelector("#form_bonos_acciones_cantidad");
@@ -167,6 +200,7 @@ const save_asset_data_pesos_4 = (e) =>{
     }  
             
     localStorage.setItem("Bonos Acciones $ARS", JSON.stringify(case_1_1));
+    evaluar_pesos_2("Bonos Acciones $ARS")
     window.location.href="../pages/assets.html" 
 }
 document.getElementById("pesos_4_next_step_btn").addEventListener("click",save_asset_data_pesos_4);

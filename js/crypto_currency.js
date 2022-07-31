@@ -13,19 +13,35 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_value=asset_input_value;
 }
 
-let evaluar = async (key) => {
-    data = await JSON.parse(localStorage.getItem(key));
-    for (value of data){
-        console.log(value.asset_input_value);
-    }
-}
-
 let case_3_1=[];    
 let case_3={};            
 let asset_input_amount=0;
 let asset_input_name="";
 let asset_input_value=0;
 let asset_quantity=0;
+
+let dolar= JSON.parse(localStorage.getItem("Variables Iniciales"));
+let total= 0; 
+let pesos_block = document.querySelector(".peso_patrimony");
+let dolar_block = document.querySelector(".dolar_patrimony");
+let btc_block = document.querySelector(".btc_patrimony");
+
+const evaluar_crypto = async (key) => {
+    let data = await JSON.parse(localStorage.getItem(key));
+    for (let i=0;i<data.length;i++){
+        valor=data[i].asset_input_value;
+        total = total + valor
+    }
+
+    await fetch("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD")
+    .then((response)=>response.json())
+    .then((json)=>{
+        btc_price = json.Data[0].RAW.USD.PRICE;
+        pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
+        dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
+        btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
+    });
+}
 
 Swal.fire({
     title: 'Cryptomonedas',
@@ -77,7 +93,7 @@ const save_asset_data_crypto_2 = (e) =>{
     }  
             
     localStorage.setItem("Cryptomonedas", JSON.stringify(case_3_1));
-    evaluar("Cryptomonedas")
+    evaluar_crypto("Cryptomonedas")
     window.location.href="../pages/assets.html" 
 }
 document.getElementById("crypto_2_next_step_btn").addEventListener("click",save_asset_data_crypto_2);
