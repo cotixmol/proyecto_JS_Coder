@@ -20,6 +20,13 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_value=asset_input_value;
 }
 
+let evaluar = async (key) => {
+    data = await JSON.parse(localStorage.getItem(key));
+    for (value of data){
+        console.log(value.asset_input_value);
+    }
+}
+
 let case_1_1_asset={};      
 let case_1_2_asset={};    
 let case_1_1=[];            
@@ -67,7 +74,7 @@ const save_asset_data_pesos_1 = (e) =>{
     document.querySelector("form").reset(); 
     
     asset_input_name="$ARS";   
-    asset_input_amount= ParseInt(JSON.parse(localStorage.getItem("pesos_depositados")));   
+    asset_input_amount= JSON.parse(localStorage.getItem("pesos_depositados"));   
     asset_input_value=1;                                                                             
 
     case_1_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);
@@ -90,7 +97,7 @@ const save_asset_data_pesos_2 = (e) =>{
     document.querySelector("form").reset();  
     
     asset_input_name="PF $ARS"; 
-    asset_input_amount= ParseInt(JSON.parse(localStorage.getItem("plazo_fijo")));                                     asset_input_value=1;                                                                                
+    asset_input_amount= JSON.parse(localStorage.getItem("plazo_fijo"));                                     asset_input_value=1;                                                                                
 
     case_1_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);
     
@@ -150,7 +157,7 @@ const save_asset_data_pesos_4 = (e) =>{
         e.preventDefault();
 
         asset_input_name = document.getElementById(`bonos_acciones_input_name_${i}`).value;                                                                               
-        asset_input_amount = ParseInt(document.getElementById(`bonos_acciones_input_amount_${i}`)).value;                                                                 
+        asset_input_amount = document.getElementById(`bonos_acciones_input_amount_${i}`).value;                                                                 
         asset_input_value = document.getElementById(`bonos_acciones_input_value_${i}`).value;;                        
         
         document.querySelector("form").reset();                                                             

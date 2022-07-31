@@ -13,6 +13,13 @@ function Wallet_assets(asset_input_name,asset_input_amount,asset_input_value){
     this.asset_input_value=asset_input_value;
 }
 
+let evaluar = async (key) => {
+    data = await JSON.parse(localStorage.getItem(key));
+    for (value of data){
+        console.log(value.asset_input_value);
+    }
+}
+
 let case_3_1=[];    
 let case_3={};            
 let asset_input_amount=0;
@@ -60,15 +67,17 @@ const save_asset_data_crypto_2 = (e) =>{
         e.preventDefault(); 
         
         asset_input_name = document.getElementById(`crypto_input_name_${i}`).value;                                                                               
-        asset_input_amount = parseInt(document.getElementById(`crypto_input_amount_${i}`)).value;                                                                 
-        asset_input_value = document.getElementById(`crypto_input_value_${i}`).value;;                        
+        asset_input_amount = document.getElementById(`crypto_input_amount_${i}`).value;                                                                 
+        asset_input_value = document.getElementById(`crypto_input_value_${i}`).value;;
+        dolar= JSON.parse(localStorage.getItem("Variables Iniciales"));                        
         document.querySelector("form").reset();                                                             
                 
-        case_3 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);              
+        case_3 = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount*dolar.dolar_value);              
         case_3_1.push(case_3);                                                                          
     }  
             
-    localStorage.setItem("Cryptomonedas", JSON.stringify(case_3_1)); 
+    localStorage.setItem("Cryptomonedas", JSON.stringify(case_3_1));
+    evaluar("Cryptomonedas")
     window.location.href="../pages/assets.html" 
 }
 document.getElementById("crypto_2_next_step_btn").addEventListener("click",save_asset_data_crypto_2);

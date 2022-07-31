@@ -19,4 +19,3 @@ const delete_block = (block,button) => {
 delete_block("local_currency","no_btn_local")
 delete_block("foreign_currency","no_btn_foreign")
 delete_block("crypto_currency","no_btn_crypto")
-
