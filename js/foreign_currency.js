@@ -33,6 +33,45 @@ let asset_input_name="";
 let asset_input_value=0;    
 let asset_quantity=0;       
 
+//Funciones Asincronicas para evaluar el patrimonio en la parte inferior.
+let dolar= JSON.parse(localStorage.getItem("Variables Iniciales"));
+let total= 0; 
+let pesos_block = document.querySelector(".peso_patrimony");
+let dolar_block = document.querySelector(".dolar_patrimony");
+let btc_block = document.querySelector(".btc_patrimony");
+
+const evaluar_dolares_1 = async (key) => {
+    let data = await JSON.parse(localStorage.getItem(key));
+    total= await data.asset_input_value;
+
+    await fetch("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD")
+    .then((response)=>response.json())
+    .then((json)=>{
+        btc_price = json.Data[0].RAW.USD.PRICE;
+        pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
+        dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
+        btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
+    });
+}
+
+const evaluar_dolares_2 = async (key) => {
+    let data = await JSON.parse(localStorage.getItem(key));
+    for (let i=0;i<data.length;i++){
+        valor=data[i].asset_input_value;
+        total = total + valor
+    }
+
+    await fetch("https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD")
+    .then((response)=>response.json())
+    .then((json)=>{
+        btc_price = json.Data[0].RAW.USD.PRICE;
+        pesos_block.innerHTML = parseInt(pesos_block.innerHTML) + (total);
+        dolar_block.innerHTML = parseInt(dolar_block.innerHTML) + (total/(dolar.dolar_value));
+        btc_block.innerHTML = parseInt(btc_block.innerHTML) + (total/(dolar.dolar_value*btc_price));
+    });
+}
+   
+
 Swal.fire({
     title: 'Moneda Extranjera $USD y Otras',
     text: "En esta sección le preguntaremos por su patrimonio en Dolares y otras Monedas",
@@ -64,6 +103,7 @@ const save_asset_data_dolares_1 = (e) =>{
     case_2_1_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);   
     
     localStorage.setItem("Dolares Depositados", JSON.stringify(case_2_1_asset));
+    evaluar_dolares_1("Dolares Depositados")
     
     const form_dolares_depositados = document.querySelector("#form_dolares_depositados");                  
     const form_plazo_fijo_dolares  = document.querySelector("#form_plazo_fijo_dolares");
@@ -88,6 +128,7 @@ const save_asset_data_dolares_2 = (e) =>{
     case_2_2_asset = new Wallet_assets(asset_input_name,asset_input_amount,asset_input_value*asset_input_amount);  
     
     localStorage.setItem("Plazo Fijo Dolares", JSON.stringify(case_2_2_asset));
+    evaluar_dolares_1("Plazo Fijo Dolares")
     
     const form_plazo_fijo_dolares = document.querySelector("#form_plazo_fijo_dolares");
     const form_monedas_fiat_cantidad  = document.querySelector("#form_monedas_fiat_cantidad");
@@ -137,7 +178,8 @@ const save_asset_data_dolares_4 = (e) =>{
         case_2_2.push(case_2);                                                                          
     }  
             
-    localStorage.setItem("Monedas Fiat", JSON.stringify(case_2_2)); 
+    localStorage.setItem("Monedas Fiat", JSON.stringify(case_2_2));
+    evaluar_dolares_2("Monedas Fiat")
     
     
     const form_monedas_fiat  = document.querySelector("#form_monedas_fiat");      
@@ -191,6 +233,7 @@ const save_asset_data_dolares_6 = (e) =>{
     }  
             
     localStorage.setItem("Bonos Acciones Dolares", JSON.stringify(case_2_1)); 
+    evaluar_dolares_2("Bonos Acciones Dolares")
     window.location.href="../pages/assets.html" 
 }
 document.getElementById("dolares_6_next_step_btn").addEventListener("click",save_asset_data_dolares_6);

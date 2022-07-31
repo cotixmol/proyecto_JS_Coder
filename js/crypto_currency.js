@@ -26,6 +26,7 @@ let pesos_block = document.querySelector(".peso_patrimony");
 let dolar_block = document.querySelector(".dolar_patrimony");
 let btc_block = document.querySelector(".btc_patrimony");
 
+//Funciones Asincronicas para evaluar el patrimonio en la parte inferior.
 const evaluar_crypto = async (key) => {
     let data = await JSON.parse(localStorage.getItem(key));
     for (let i=0;i<data.length;i++){
